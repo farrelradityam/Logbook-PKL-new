@@ -11,4 +11,7 @@ class ScheduleOfActivity extends Model
 
     protected $fillable = ['date','batch_school_major_id'];
 
+    public function Batch_School_Major(){
+        return $this->belongsTo(BatchSchoolMajor::class);
+    }
 }

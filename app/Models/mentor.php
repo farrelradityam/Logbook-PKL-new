@@ -11,4 +11,7 @@ class Mentor extends Model
 
     protected $fillable = ['name','user_id'];
 
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }

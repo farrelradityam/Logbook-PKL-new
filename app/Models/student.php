@@ -14,4 +14,12 @@ class Student extends Model
         'batch_school_major_id', 
         'user_id',
     ];
+
+    public function Batch_School_Major(){
+        return $this->belongsTo(BatchSchoolMajor::class);
+    }
+
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }
