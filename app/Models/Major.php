@@ -9,8 +9,6 @@ class Major extends Model
 {
     use HasFactory;
 
-    protected $table = 'major';
-    protected $primarykey = 'id';
     protected $fillable = ['code','name'];
 
 }

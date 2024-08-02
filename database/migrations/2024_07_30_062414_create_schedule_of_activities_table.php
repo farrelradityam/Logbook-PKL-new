@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('schedule_of_activities', function (Blueprint $table) {
             $table->id('id');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->unsignedBigInteger('batch_school_major_id');
             $table->foreign('batch_school_major_id')->references('id')->on('batch_school_majors');
             $table->timestamps();

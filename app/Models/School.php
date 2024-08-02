@@ -9,8 +9,6 @@ class School extends Model
 {
     use HasFactory;
 
-    protected $table = 'school';
-    protected $primarykey = 'id';
-    protected $fillable = ['name','batch_school_id'];
+    protected $fillable = ['name','address'];
 
 }
