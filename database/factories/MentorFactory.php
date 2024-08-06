@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\School>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Mentor>
  */
-class SchoolFactory extends Factory
+class MentorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +18,8 @@ class SchoolFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->company(),
-            'address' => fake()->address()
+            'name' => fake()->name(),
+            'user_id' => User::all()->random()->id
         ];
     }
 }
