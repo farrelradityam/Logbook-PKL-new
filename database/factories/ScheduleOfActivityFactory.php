@@ -19,7 +19,7 @@ class ScheduleOfActivityFactory extends Factory
     {
         return [
             'date' => fake()->date(),
-            'batch_school_major_id' => BatchSchoolMajor::all()->random()->id
+            'batch_school_major_id' => BatchSchoolMajor::inRandomOrder()->first()->id
         ];
     }
 }

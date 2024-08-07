@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\BatchSchoolMajor;
-use App\Models\USer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,8 +21,8 @@ class StudentFactory extends Factory
         return [
             'name' => fake()->name(),
             'phone_number' => fake()->phoneNumber(),
-            'batch_school_major_id' => BatchSchoolMajor::all()->random()->id,
-            'user_id' => User::all()->random()->id
+            'batch_school_major_id' => BatchSchoolMajor::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id
         ];
     }
 }

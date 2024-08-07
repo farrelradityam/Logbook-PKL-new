@@ -35,7 +35,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'smkn 2',
         // ]);
 
-        // $this->call([SchoolSeeder::class, UserSeeder::class]);
+        // $this->call([
+        //     SchoolSeeder::class,
+        //     UserSeeder::class
+        // ]);
 
         User::factory(20)->create();
         School::factory(20)->create();

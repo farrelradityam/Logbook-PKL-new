@@ -11,11 +11,11 @@ class BatchSchoolMajor extends Model
 
     protected $fillable = ['batch_school_id','msjor_id'];
 
-    public function Batch_School(){
+    public function batchSchool(){
         return $this->belongsTo(BatchSchool::class);
     }
 
-    public function Major(){
+    public function major(){
         return $this->belongsTo(Major::class);
     }
 }

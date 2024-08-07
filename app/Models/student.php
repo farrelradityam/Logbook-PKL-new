@@ -15,11 +15,11 @@ class Student extends Model
         'user_id',
     ];
 
-    public function Batch_School_Major(){
+    public function batchSchoolMajor(){
         return $this->belongsTo(BatchSchoolMajor::class);
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

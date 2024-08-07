@@ -17,19 +17,20 @@ class Activity extends Model
         'validated_by_mentor_id',
     ];
 
-    public function Schedule_Of_Activity(){
+    public function scheduleOfActivity(){
         return $this->belongsTo(ScheduleOfActivity::class);
     }
 
-    public function Student(){
+    public function student(){
         return $this->belongsTo(Student::class);
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function Validated_by_Mentor(){
-        return $this->belongsTo(Mentor::class);
+    public function validatedByMentor()
+    {
+        return $this->belongsTo(Mentor::class, 'mentor_id');
     }
 }

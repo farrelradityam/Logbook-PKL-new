@@ -19,7 +19,7 @@ class MentorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'user_id' => User::all()->random()->id
+            'user_id' => User::inRandomOrder()->first()->id
         ];
     }
 }

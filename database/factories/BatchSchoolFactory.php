@@ -19,8 +19,8 @@ class BatchSchoolFactory extends Factory
     public function definition(): array
     {
         return [
-            'school_id' => School::all()->random()->id,
-            'batch_id' => Batch::all()->random()->id
+            'school_id' => School::inRandomOrder()->first()->id,
+            'batch_id' => Batch::inRandomOrder()->first()->id
         ];
     }
 }

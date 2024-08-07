@@ -22,10 +22,10 @@ class ActivityFactory extends Factory
     {
         return [
             'description' => fake()->paragraph(),
-            'schedule_of_activity_id' => ScheduleOfActivity::all()->random()->id,
-            'student_id' => Student::all()->random()->id,
-            'user_id' => User::all()->random()->id,
-            'validated_by_mentor_id' => Mentor::all()->random()->id,
+            'schedule_of_activity_id' => ScheduleOfActivity::inRandomOrder()->first()->id,
+            'student_id' => Student::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
+            'validated_by_mentor_id' => Mentor::inRandomOrder()->first()->id
         ];
     }
 }
