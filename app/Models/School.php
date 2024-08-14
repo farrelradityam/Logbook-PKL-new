@@ -11,4 +11,8 @@ class School extends Model
 
     protected $fillable = ['name','address'];
 
+    public function batchSchool()
+    {
+        return $this->hasMany(BatchSchool::class);
+    }
 }

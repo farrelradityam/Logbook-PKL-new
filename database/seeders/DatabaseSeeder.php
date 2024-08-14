@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         //     UserSeeder::class
         // ]);
 
-        User::factory(20)->create();
+        User::factory(100)->create();
         School::factory(20)->create();
         Batch::factory(20)->create();
         BatchSchool::factory(20)->create();
