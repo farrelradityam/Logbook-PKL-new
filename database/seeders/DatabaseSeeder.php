@@ -26,10 +26,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]); 
+        Student::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]); 
+
+        // Student::factory()->create([
+        //     'name' => 'admin',
+        //     'phone_number' => '038372748',
+
+        // ]);
 
         // School::create([
         //     'name' => 'smkn 2',
@@ -46,7 +52,7 @@ class DatabaseSeeder extends Seeder
         BatchSchool::factory(20)->create();
         Major::factory(20)->create();
         BatchSchoolMajor::factory(20)->create();
-        Student::factory(20)->create();
+        Student::factory(100)->create();
         ScheduleOfActivity::factory(20)->create();
         Mentor::factory(20)->create();
         Activity::factory(20)->create();
