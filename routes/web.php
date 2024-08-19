@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Activity;
 use App\Models\Batch;
+use App\Models\BatchSchool;
+use App\Models\BatchSchoolMajor;
 use App\Models\Major;
+use App\Models\Mentor;
 use App\Models\Post;
+use App\Models\ScheduleOfActivity;
 use App\Models\School;
 use App\Models\Student;
 use App\Models\User;
@@ -65,7 +70,7 @@ Route::get('/', function () {
         // return view('welcome',['title' =>'home page']);
 });
 
-    Route::get('/a', function () {
+     Route::get('/a', function () {
 
         dump('1. data 1 user pertama');
         $soal1 = User::find(1)->toArray();
@@ -98,7 +103,7 @@ Route::get('/', function () {
         dump($soal6);
 
         dump('7. data user pertama dengan id > 5');
-        $soal7 = User::where('id', '>', 5)->limit(1)->get()->toArray();   
+        $soal7 = User::where('id', '>', 5)->first()->toArray();   
 
         dump($soal7);
     
@@ -186,11 +191,45 @@ Route::get('/b', function () {
     dump($soal111);
 
     dump('12. data siswa dengan kolom nama/email berawalan dengan huruf "A" ATAU mengandung kata "putri"');
-    $soal12 = Student::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%putri%')->get()->toArray();
+    $soal122 = Student::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%putri%')->get()->toArray();
 
-    dump($soal12);
+    dump($soal122);
 });
 
+Route::get('/c', function () {
+
+    dump('1.Bagaimana cara menampilkan daftar siswa yang ada di sekolah "SMKN 8 Probolinggo" dan diurutkan berdasarkan abjad (A - Z)');
+    dump(Student::whereRelation('batchSchoolMajor.batchSchool.school', 'name', 'SMKN 8 Probolinggo')->orderBy('name', 'asc')->get()->toArray());
+
+    dump('2.Bagaimana cara menampilkan semua jurusan yang memiliki setidaknya satu siswa terkait');
+    dump(Major::has('batchSchoolMajor')->get()->toArray());
+
+    dump('3.Bagaimana cara mendapatkan kegiatan yang diverifikasi oleh pembimbing dengan id 7');
+    dump(Activity::where('validated_by_mentor_id', 7)->get()->toArray());
+
+    dump('4.Bagaimana cara mendapatkan daftar User yang tidak memiliki pembimbing dan diurutkan berdasarkan abjad (A - Z)');
+    dump(User::doesntHave('mentor')->orderBy('name', 'asc')->get()->toArray());
+
+    dump('5.Bagaimana cara mendapatkan angkatan_sekolah yang memiliki jurusan dengan id 19');
+    dump(BatchSchool::whereRelation('batchSchoolMajor.major', 'id', 19)->get()->toArray());
+
+    dump('6.Bagaimana cara mendapatkan daftar User yang terhubung dengan Mentor yang bernama "Dimas Saptono" ');
+    dump(Mentor::whereRelation('user', 'name', 'Dimas Saptono')->get()->toArray());
+
+    dump('7.Bagaimana cara menampilkan User yang memiliki siswa dengan nomor telepon "0299 1456 4903" ');
+    dump(User::whereRelation('student', 'phone_number', '0299 1456 4903')->get()->toArray());
+
+    dump('8.Bagaimana cara mendapatkan kegiatan yang dijadwalkan pada tanggal 1984-06-07');
+    dump(Activity::whereHas('scheduleOfActivity', function($query) {
+        $query->where('date', '1984-06-07');
+    })->get()->toArray());
+
+    dump('9.Bagaimana cara menampilkan daftar kegiatan yang terjadi di sekolah SMK 4 Ternate melalui siswa');
+    dump(Activity::whereRelation('student.batchSchoolMajor.batchSchool.school', 'name', 'SMK 4 Ternate')->get()->toArray());
+
+    dump('10.Bagaimana cara menampilkan siswa yang terdaftar pada angkatan dengan id 16 dan diurutkan berdasarkan abjad (A - Z)');
+    dump(Student::whereRelation('batchSchoolMajor.batchSchool', 'batch_id', 16)->orderBy('name', 'asc')->get()->toArray());
+});
 
 
 

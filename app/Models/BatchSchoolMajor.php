@@ -11,6 +11,14 @@ class BatchSchoolMajor extends Model
 
     protected $fillable = ['batch_school_id','msjor_id'];
 
+    public function student() {
+        return $this->hasMany(Student::class);
+    }
+
+    public function scheduleOfAtivity() {
+        return $this->hasMany(ScheduleOfActivity::class);
+    }
+
     public function batchSchool(){
         return $this->belongsTo(BatchSchool::class);
     }

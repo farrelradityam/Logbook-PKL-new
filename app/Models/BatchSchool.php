@@ -11,6 +11,10 @@ class BatchSchool extends Model
 
     protected $fillable = ['batch_id','school_id'];
 
+    public function batchSchoolMajor(){
+        return $this->hasMany(BatchSchoolMajor::class);
+    }
+
     public function batch(){
         return $this->belongsTo(Batch::class);
     }

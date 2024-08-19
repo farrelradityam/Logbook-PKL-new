@@ -10,4 +10,7 @@ class Major extends Model
     use HasFactory;
     protected $fillable = ['code','name'];
 
+    public function batchSchoolMajor() {
+        return $this->hasMany(BatchSchoolMajor::class);
+    }
 }

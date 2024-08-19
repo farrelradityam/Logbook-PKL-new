@@ -29,8 +29,7 @@ class Activity extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function validatedByMentor()
-    {
+    public function validatedByMentor(){
         return $this->belongsTo(Mentor::class, 'mentor_id');
     }
 }

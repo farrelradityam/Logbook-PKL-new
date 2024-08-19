@@ -15,6 +15,10 @@ class Student extends Model
         'user_id',
     ];
 
+    public function activity(){
+        return $this->hasMany(Activity::class);
+    }
+
     public function batchSchoolMajor(){
         return $this->belongsTo(BatchSchoolMajor::class);
     }

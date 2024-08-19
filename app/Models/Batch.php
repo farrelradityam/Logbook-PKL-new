@@ -11,4 +11,7 @@ class Batch extends Model
 
     protected $fillable = ['year'];
 
+    public function batchSchool() {
+        return $this->hasMany(BatchSchool::class);
+    }
 }
