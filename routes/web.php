@@ -16,61 +16,63 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    dump('Bagaimana caranya mendapatkan data berikut: Sekolah X pernah terdaftar PKL pada Tahun/Angkatan berapa saja');
+// Route::get('/', function () {
 
-    $data1 = DB::table('schools')
-        ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
-        ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
-        ->select('schools.name as school_name', 'batches.year as batch_year')
-        ->where('schools.name', 'SMKN 7 Pariaman')
-        ->get();
+//     // dump('Bagaimana caranya mendapatkan data berikut: Sekolah X pernah terdaftar PKL pada Tahun/Angkatan berapa saja');
+
+//     // $data1 = DB::table('schools')
+//     //     ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
+//     //     ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
+//     //     ->select('schools.name as school_name', 'batches.year as batch_year')
+//     //     ->where('schools.name', 'SMKN 7 Pariaman')
+//     //     ->get();
     
-    dump($data1);
+//     // dump($data1);
 
-    dump('Bagaimana caranya mendapatkan data berikut: Pada Tahun/Angkatan 2024, Sekolah mana saja yang mendaftar PKL?');
+//     // dump('Bagaimana caranya mendapatkan data berikut: Pada Tahun/Angkatan 2024, Sekolah mana saja yang mendaftar PKL?');
 
-    $data2 = DB::table('schools')
-        ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
-        ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
-        ->select('schools.name as school_name', 'batches.year as batch_year')
-        ->where('batches.year', '2024')
-        ->get();
+//     // $data2 = DB::table('schools')
+//     //     ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
+//     //     ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
+//     //     ->select('schools.name as school_name', 'batches.year as batch_year')
+//     //     ->where('batches.year', '2024')
+//     //     ->get();
 
-    dump($data2);
+//     // dump($data2);
 
-    dump('Bagaimana caranya mendapatkan data berikut: Jurusan apa saja yang terdaftar PKL dari Sekolah X pada Tahun/Angkatan 2024?');
+//     // dump('Bagaimana caranya mendapatkan data berikut: Jurusan apa saja yang terdaftar PKL dari Sekolah X pada Tahun/Angkatan 2024?');
 
-    $data3 = DB::table('schools')
-        ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
-        ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
-        ->join('batch_school_majors', 'batch_school_id', '=', 'batch_school_majors.batch_school_id')
-        ->join('majors', 'batch_school_majors.major_id', '=', 'majors.id')
-        ->select('majors.code as major_code')
-        ->where('schools.name', 'SMKN 7 Pariaman')
-        ->where('batches.year', '2024')
-        ->get();
+//     // $data3 = DB::table('schools')
+//     //     ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
+//     //     ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
+//     //     ->join('batch_school_majors', 'batch_school_id', '=', 'batch_school_majors.batch_school_id')
+//     //     ->join('majors', 'batch_school_majors.major_id', '=', 'majors.id')
+//     //     ->select('majors.code as major_code')
+//     //     ->where('schools.name', 'SMKN 7 Pariaman')
+//     //     ->where('batches.year', '2024')
+//     //     ->get();
 
-    dump($data3);
+//     // dump($data3);
 
-    dump('Bagaimana caranya mendapatkan data berikut: Sekolah mana saja yang terdaftar PKL pada Tahun/Angkatan 2024 dan memiliki Jurusan PPLG?');
+//     // dump('Bagaimana caranya mendapatkan data berikut: Sekolah mana saja yang terdaftar PKL pada Tahun/Angkatan 2024 dan memiliki Jurusan PPLG?');
 
-    $data4 = DB::table('schools')
-        ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
-        ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
-        ->join('batch_school_majors', 'batch_school_id', '=', 'batch_school_majors.batch_school_id')
-        ->join('majors', 'batch_school_majors.major_id', '=', 'majors.id')
-        ->select('schools.name as school_name')
-        ->where('batches.year', '1983')
-        ->where('majors.code', 'SSP')
-        ->get();
+//     // $data4 = DB::table('schools')
+//     //     ->join('batch_schools', 'schools.id', '=', 'batch_schools.school_id')
+//     //     ->join('batches', 'batch_schools.batch_id', '=', 'batches.id')
+//     //     ->join('batch_school_majors', 'batch_school_id', '=', 'batch_school_majors.batch_school_id')
+//     //     ->join('majors', 'batch_school_majors.major_id', '=', 'majors.id')
+//     //     ->select('schools.name as school_name')
+//     //     ->where('batches.year', '1983')
+//     //     ->where('majors.code', 'SSP')
+//     //     ->get();
 
-    dump($data4);
+//     // dump($data4);
 
-        // return view('welcome',['title' =>'home page']);
-});
+//         return view('home',['title' =>'home page']);
+// });
 
-     Route::get('/a', function () {
+
+Route::get('/a', function () {
 
         dump('1. data 1 user pertama');
         $soal1 = User::find(1)->toArray();
@@ -131,7 +133,7 @@ Route::get('/', function () {
         $soal12 = User::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%admin%')->get()->toArray();
 
         dump($soal12);
-    });
+});
 
 Route::get('/b', function () {
 
@@ -232,11 +234,26 @@ Route::get('/c', function () {
 });
 
 
+Route::get('/', function () {
+    return view('home',['title' => 'Home']);
+});
 
+Route::get('/calendar', function () {
+    return view('calendar',['title' =>'Calendar']);
+});
 
-// Route::get('/calendar', function () {
-//     return view('calendar',['title' =>'calendar']);
-// });
+Route::get('/team', function () {
+    return view('team',['title' =>'Team']);
+});
+
+Route::get('/projects', function () {
+    return view('projects',['title' =>'Projects']);
+});
+
+Route::get('/about', function () {
+    return view('about',['title' =>'About']);
+});
+
 // Route::get('/posts', function () {
 //     return view('posts',['title' =>'team', 'posts'=> School::all()]);
 // });
@@ -244,12 +261,4 @@ Route::get('/c', function () {
 
 //     // $post = Post::find($id);
 //     return view('post', ['title' => 'Single Post','post' => $post]);
-// });
-
-// Route::get('/projects', function () {
-//     return view('projects',['title' =>'projects', 'projects'=> Major::all()]);
-// });
-
-// Route::get('/reports', function () {
-//     return view('reports',['title' =>'reports']);
 // });
