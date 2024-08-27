@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('mentors', function (Blueprint $table) {
             $table->id('id');
             $table->string('name')->nullable();
+            $table->enum('gender', ['L', 'P'])->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
