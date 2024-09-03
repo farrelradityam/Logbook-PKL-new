@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\StudentController;
 use App\Models\Activity;
 use App\Models\Batch;
 use App\Models\BatchSchool;
@@ -253,6 +255,21 @@ Route::get('/projects', function () {
 Route::get('/about', function () {
     return view('about',['title' =>'About']);
 });
+
+Route::get('/batch', [BatchController::class, 'tampil'])->name('batch.tampil');
+
+Route::get('/batch/tambah', [BatchController::class, 'tambah'])->name('batch.tambah');
+
+Route::post('/batch/submit', [BatchController::class, 'submit'])->name('batch.submit');
+
+Route::get('/batch/edit/{id}', [BatchController::class, 'edit'])->name('batch.edit');
+
+Route::post('/batch/update/{id}', [BatchController::class, 'update'])->name('batch.update');
+
+Route::post('/batch/delete/{id}', [BatchController::class, 'delete'])->name('batch.delete');
+
+
+
 
 // Route::get('/posts', function () {
 //     return view('posts',['title' =>'team', 'posts'=> School::all()]);
