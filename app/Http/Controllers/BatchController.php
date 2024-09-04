@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class BatchController extends Controller
 {
-    public function tampil() {
+    function tampil() {
         $batches = Batch::all();
-        return view('batch.tampil', compact('batches'), ['title' => 'CRUD batch']);
+        return view('batch.tampil', compact('batches'), ['title' => 'CRUD ANGKATAN']);
     }
 
     function tambah() {
-        return view('batch.tambah', ['title' => 'Tambah Batch']);
+        return view('batch.tambah', ['title' => 'TAMBAH ANGKATAN']);
     }
 
     function submit(Request $request) {
@@ -26,7 +26,7 @@ class BatchController extends Controller
 
     function edit($id) {
         $batch = Batch::find($id);
-        return view('batch.edit', compact('batch'), ['title' => 'Edit Batch']);
+        return view('batch.edit', compact('batch'), ['title' => 'EDIT ANGKATAN']);
     }
 
     function update(Request $request, $id) {

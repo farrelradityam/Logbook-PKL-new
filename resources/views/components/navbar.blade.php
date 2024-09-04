@@ -11,7 +11,7 @@
               <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
               <x-nav-link href="/team" :active="request()->is('team')">Team</x-nav-link>
               <x-nav-link href="/projects" :active="request()->is('projects')">Projects</x-nav-link>
-              <x-nav-link href="/calendar" :active="request()->is('calendar')">Calendar</x-nav-link>
+              <x-nav-link href="/calendar" :active="request()->is('calendar')">Crud</x-nav-link>
               <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             </div>
           </div>
@@ -71,7 +71,7 @@
         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         <x-nav-link href="team" :active="request()->is('team')">Team</x-nav-link>
         <x-nav-link href="projects" :active="request()->is('projects')">Projects</x-nav-link>
-        <x-nav-link href="calendar" :active="request()->is('calendar')">Calendar</x-nav-link>
+        <x-nav-link href="calendar" :active="request()->is('calendar')">Crud</x-nav-link>
         <x-nav-link href="about" :active="request()->is('about')">About</x-nav-link>
       </div>
       <div class="border-t border-gray-700 pb-3 pt-4">

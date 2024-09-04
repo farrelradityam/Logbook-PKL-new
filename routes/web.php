@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Models\Activity;
 use App\Models\Batch;
@@ -241,7 +242,7 @@ Route::get('/', function () {
 });
 
 Route::get('/calendar', function () {
-    return view('calendar',['title' =>'Calendar']);
+    return view('calendar',['title' =>'Crud']);
 });
 
 Route::get('/team', function () {
@@ -256,6 +257,7 @@ Route::get('/about', function () {
     return view('about',['title' =>'About']);
 });
 
+// Route batch
 Route::get('/batch', [BatchController::class, 'tampil'])->name('batch.tampil');
 
 Route::get('/batch/tambah', [BatchController::class, 'tambah'])->name('batch.tambah');
@@ -267,6 +269,21 @@ Route::get('/batch/edit/{id}', [BatchController::class, 'edit'])->name('batch.ed
 Route::post('/batch/update/{id}', [BatchController::class, 'update'])->name('batch.update');
 
 Route::post('/batch/delete/{id}', [BatchController::class, 'delete'])->name('batch.delete');
+
+// Route school
+Route::get('/school', [SchoolController::class, 'tampil'])->name('school.tampil');
+
+Route::get('/school/tambah', [SchoolController::class, 'tambah'])->name('school.tambah');
+
+Route::post('/school/submit', [SchoolController::class, 'submit'])->name('school.submit');
+
+Route::get('/school/edit/{id}', [SchoolController::class, 'edit'])->name('school.edit');
+
+Route::post('/school/update/{id}', [SchoolController::class, 'update'])->name('school.update');
+
+Route::post('/school/delete/{id}', [SchoolController::class, 'delete'])->name('school.delete');
+
+
 
 
 
