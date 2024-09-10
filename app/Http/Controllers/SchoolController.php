@@ -7,42 +7,47 @@ use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
-    function tampil() {
-        $schools = School::all();
-        return view('school.tampil', compact('schools'), ['title' => 'CRUD SEKOLAH']);
+    public function index() {
+        $schools = School::paginate(5);
+        return view('school.index', compact('schools'), ['title' => 'CRUD SCHOOL']);
     }
 
-    function tambah() {
-        return view('school.tambah', ['title' => 'TAMBAH SEKOLAH']);
+    public function create() {
+        return view('school.create', ['title' => 'CREATE SCHOOL']);
     }
 
-    function submit(Request $request) {
-        $school = new School();
-        $school->name = $request->name;
-        $school->address = $request->address;
-        $school->save();
+    public function store(Request $request) {
+        School::create($request->validate([
+            'name' => ['required', 'min:3', 'max:255', 'string'],
+            'address' => ['required', 'min:3', 'max:255', 'string'],
+        ]));
 
-        return redirect()->route('school.tampil');
+        return redirect()->route('school.index');
     }
 
-    function edit($id) {
-        $school = School::find($id);
-        return view('school.edit', compact('school'), ['title' => 'EDIT SEKOLAH']);
+    public function show($id) {
+        $school = School::findOrFail($id);
+        return view('school.show', compact('school'), ['title' => 'DETAIL SCHOOL']);
     }
 
-    function update(Request $request, $id) {
-        $school = School::find($id);
-        $school->name = $request->name;
-        $school->address = $request->address;
-        $school->update();
-
-        return redirect()->route('school.tampil');
+    public function edit($id) {
+        $school = School::findOrFail($id);
+        return view('school.edit', compact('school'), ['title' => 'EDIT SCHOOL']);
     }
 
-    function delete($id) {
-        $school = School::find($id);
+    public function update(Request $request, $id) {
+        School::findOrFail($id)->update($request->validate([
+            'name' => ['required', 'min:3', 'max:255', 'string'],
+            'address' => ['required', 'min:3', 'max:255', 'string'],
+        ]));
+
+        return redirect()->route('school.index');
+    }
+
+    public function destroy($id) {
+        $school = School::findOrFail($id);
         $school->delete();
 
-        return redirect()->route('school.tampil');
+        return redirect()->route('school.index');
     }
 }

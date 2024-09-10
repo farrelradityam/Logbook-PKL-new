@@ -3,44 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\BatchSchoolMajor;
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
 {
-    function tampil() {
-        $batches = Batch::all();
-        return view('batch.tampil', compact('batches'), ['title' => 'CRUD ANGKATAN']);
+    public function index() {
+        $batches = Batch::paginate(5);
+        return view('batch.index', compact('batches'), ['title' => 'CRUD BATCH']);
     }
 
-    function tambah() {
-        return view('batch.tambah', ['title' => 'TAMBAH ANGKATAN']);
+    public function create() {
+        return view('batch.create', ['title' => 'CREATE BATCH']);
     }
 
-    function submit(Request $request) {
-        $batch = new Batch();
-        $batch->year = $request->year;
-        $batch->save();
+    public function store(Request $request) {
+        Batch::create($request->validate([
+            'year' => ['required', 'digits:4', 'integer']
+        ]));
 
-        return redirect()->route('batch.tampil');
+        return redirect()->route('batch.index');
     }
 
-    function edit($id) {
-        $batch = Batch::find($id);
-        return view('batch.edit', compact('batch'), ['title' => 'EDIT ANGKATAN']);
+    public function show($id) {
+        $batch = Batch::findOrFail($id);
+        return view('batch.show', compact('batch'), ['title' => 'DETAIL BATCH']);
     }
 
-    function update(Request $request, $id) {
-        $batch = Batch::find($id);
-        $batch->year = $request->year;
-        $batch->update();
-
-        return redirect()->route('batch.tampil');
+    public function edit($id) {
+        $batch = Batch::findOrFail($id);
+        return view('batch.edit', compact('batch'), ['title' => 'EDIT BATCH']);
     }
 
-    function delete($id) {
-        $batch = Batch::find($id);
+    public function update(Request $request, $id) {
+        Batch::findOrFail($id)->update($request->validate([
+            'year' => ['required', 'digits:4', 'integer']
+        ]));
+
+        return redirect()->route('batch.index');
+    }
+
+    public function destroy($id) {
+        $batch = Batch::findOrFail($id);
         $batch->delete();
 
-        return redirect()->route('batch.tampil');
+        return redirect()->route('batch.index');
     }
 }
