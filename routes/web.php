@@ -257,9 +257,15 @@ Route::get('/about', function () {
     return view('about',['title' =>'About']);
 });
 
+Route::get('/datatable', function () {
+    return view('major.datatable',['title' => 'Datatable']);
+});
+
 
 Route::resource('batch', BatchController::class);
 Route::resource('school', SchoolController::class);
+
+Route::get('/clientside', [SchoolController::class, 'datatable'])->name('school.datatable');
 
 
 

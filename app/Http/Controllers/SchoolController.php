@@ -43,4 +43,10 @@ class SchoolController extends Controller
 
         return redirect()->route('school.index');
     }
+
+    public function datatable() {
+        $school = School::all();
+        return view('school.ClientSide', compact('school'), ['title' => 'CLIENTSIDE SCHOOL']);
+
+    }
 }
