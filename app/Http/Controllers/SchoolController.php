@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 class SchoolController extends Controller
 {
     public function index() {
-        $schools = School::paginate(5);
-        return view('school.index', compact('schools'), ['title' => 'CRUD SCHOOL']);
+        $schools = School::all();
+        return view('school.index', compact('schools'), ['title' => 'Client-Side']);
     }
 
     public function create() {
@@ -47,6 +47,5 @@ class SchoolController extends Controller
     public function datatable() {
         $school = School::all();
         return view('school.ClientSide', compact('school'), ['title' => 'CLIENTSIDE SCHOOL']);
-
     }
 }

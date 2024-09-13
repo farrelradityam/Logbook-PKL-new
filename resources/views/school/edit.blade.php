@@ -15,11 +15,11 @@
             @error('address')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
-        </div>
-        </div>
+        
 
-        <div>
-            <button type="submit" class="px-4 py-2 w-1/6 ml-8 bg-green-600 hover:bg-green-800 active:bg-green-800 focus:ring focus:ring-green-300 text-white rounded-md">Update</button>
+            <div>
+                <button type="submit" class="px-4 py-2 w-1/6 mt-5 bg-green-600 hover:bg-green-800 active:bg-green-800 focus:ring focus:ring-green-300 text-white rounded-md">Update</button>
+            </div>
         </div>
     </form>
     

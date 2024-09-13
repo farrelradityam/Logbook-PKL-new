@@ -7,7 +7,7 @@
         </div>
     </div>
     
-    <table class="table-auto w-full bg-gray-300 rounded-lg shadow">
+    <table id="table" class="table-auto w-full bg-gray-300 rounded-lg shadow">
         <thead class="bg-gray-200">
             <tr>
                 <th class="px-4 py-2 text-center w-2/12">ID</th>
@@ -33,7 +33,4 @@
             @endforeach
         </tbody>
     </table>
-    <div class="mt-5">
-        {{ $schools->links() }}
-    </div>
 </x-layout>

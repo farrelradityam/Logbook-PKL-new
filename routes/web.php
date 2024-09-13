@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Models\Activity;
@@ -264,6 +265,7 @@ Route::get('/datatable', function () {
 
 Route::resource('batch', BatchController::class);
 Route::resource('school', SchoolController::class);
+Route::resource('major', MajorController::class);
 
 Route::get('/clientside', [SchoolController::class, 'datatable'])->name('school.datatable');
 

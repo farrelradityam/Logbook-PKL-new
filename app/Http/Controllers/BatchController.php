@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBatchRequest;
 use App\Http\Requests\UpdateBatchRequest;
 use App\Models\Batch;
-use App\Models\BatchSchoolMajor;
-use App\Models\School;
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
