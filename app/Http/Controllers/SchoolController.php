@@ -46,6 +46,6 @@ class SchoolController extends Controller
 
     public function datatable() {
         $school = School::all();
-        return view('school.ClientSide', compact('school'), ['title' => 'CLIENTSIDE SCHOOL']);
+        return view('school.index', compact('school'), ['title' => 'CLIENTSIDE SCHOOL']);
     }
 }

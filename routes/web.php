@@ -267,9 +267,6 @@ Route::resource('batch', BatchController::class);
 Route::resource('school', SchoolController::class);
 Route::resource('major', MajorController::class);
 
-Route::get('/clientside', [SchoolController::class, 'datatable'])->name('school.datatable');
-
-
 
 
 
