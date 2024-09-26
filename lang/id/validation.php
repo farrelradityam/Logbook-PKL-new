@@ -95,8 +95,8 @@ return [
     'max' => [
         'array' => 'The :attribute field must not have more than :max items.',
         'file' => 'The :attribute field must not be greater than :max kilobytes.',
-        'numeric' => ':attribute must be smaller than :max characters.',
-        'string' => ':attribute must be smaller than :max characters.',
+        'numeric' => ':attribute must be smaller than :max.',
+        'string' => ':attribute must be smaller than :max.',
     ],
     'max_digits' => 'The :attribute field must not have more than :max digits.',
     'mimes' => 'The :attribute field must be a file of type: :values.',
@@ -104,8 +104,8 @@ return [
     'min' => [
         'array' => 'The :attribute field must have at least :min items.',
         'file' => 'The :attribute field must be at least :min kilobytes.',
-        'numeric' => ':attribute must be at least :min characters.',
-        'string' => ':attribute must be at least :min characters.',
+        'numeric' => ':attribute must be at least :min.',
+        'string' => ':attribute must be at least :min.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',

@@ -46,16 +46,16 @@ class DatabaseSeeder extends Seeder
         //     UserSeeder::class
         // ]);
 
-        User::factory(100)->create();
-        School::factory(20)->create();
-        Batch::factory(20)->create();
-        BatchSchool::factory(20)->create();
-        Major::factory(20)->create();
-        BatchSchoolMajor::factory(20)->create();
-        Student::factory(100)->create();
-        ScheduleOfActivity::factory(20)->create();
-        Mentor::factory(20)->create();
-        Activity::factory(20)->create();
+        User::factory(50)->create();
+        School::factory(50)->create();
+        Batch::factory(50)->create();
+        BatchSchool::factory(50)->create();
+        Major::factory(50)->create();
+        BatchSchoolMajor::factory(50)->create();
+        Student::factory(50)->create();
+        ScheduleOfActivity::factory(50)->create();
+        Mentor::factory(50)->create();
+        Activity::factory(50)->create();
 
     }
 }

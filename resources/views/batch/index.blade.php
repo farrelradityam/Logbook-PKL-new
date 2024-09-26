@@ -23,7 +23,7 @@
                 <td class="flex justify-center space-x-2 mb-3 mt-3">
                     <a href="{{ route('batch.show', $batch->id) }}" class="px-4 py-2 bg-sky-500 hover:bg-sky-700 text-white rounded-md">Detail</a>
                     <a href="{{ route('batch.edit', $batch->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
-                    <form action="{{ route('batch.destroy', $batch->id) }}" method="post">
+                    <form action="{{ route('batch.destroy', $batch->id) }}" method="post" onsubmit="return confirmDelete(event)">
                         @csrf
                         @method('DELETE')
                         <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>

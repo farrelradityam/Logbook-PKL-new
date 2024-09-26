@@ -18,7 +18,7 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-
+use Yajra\DataTables\Facades\DataTables;
 
 // Route::get('/', function () {
 
@@ -258,15 +258,12 @@ Route::get('/about', function () {
     return view('about',['title' =>'About']);
 });
 
-Route::get('/datatable', function () {
-    return view('major.datatable',['title' => 'Datatable']);
-});
-
 
 Route::resource('batch', BatchController::class);
 Route::resource('school', SchoolController::class);
 Route::resource('major', MajorController::class);
 
+Route::get('/data', [MajorController::class, 'getData'])->name('data');
 
 
 

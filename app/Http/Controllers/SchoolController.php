@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateSchoolRequest;
 use App\Models\School;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\confirm;
+
 class SchoolController extends Controller
 {
     public function index() {
@@ -42,10 +44,5 @@ class SchoolController extends Controller
         $school->delete();
 
         return redirect()->route('school.index');
-    }
-
-    public function datatable() {
-        $school = School::all();
-        return view('school.index', compact('school'), ['title' => 'CLIENTSIDE SCHOOL']);
     }
 }

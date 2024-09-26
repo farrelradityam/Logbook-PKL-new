@@ -22,7 +22,7 @@ class StoreBatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'year' => ['required', 'digits:4', 'integer'],
+            'year' => ['required', 'min:1999', 'max:2999', 'integer'],
         ];
     }
 }
