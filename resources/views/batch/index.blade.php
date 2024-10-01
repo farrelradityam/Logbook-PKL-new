@@ -1,5 +1,26 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+
+    @if(session('error'))
+        <div class="bg-red-600 text-white text-lg p-4 mb-4 rounded relative flex items-center justify-between" id="error-message">
+            <span>{{ session('error') }}</span>
+            <button type="button" class="text-white font-bold hover:text-gray-200 text-3xl mb-1" onclick="closeAlert('error-message')">&times;</button>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div class="bg-green-600 text-white text-lg p-4 mb-4 rounded relative flex items-center justify-between" id="success-message">
+            <span>{{ session('success') }}</span>
+            <button type="button" class="text-white font-bold hover:text-gray-200 text-3xl mb-1" onclick="closeAlert('success-message')">&times;</button>
+        </div>
+    @endif
+
+    <script>
+        function closeAlert(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+
     <div class="flex items-center justify-between">
         <h4 class="text-xl font-semibold mb-4">List Batch</h4>
         <div class="mb-5 ">

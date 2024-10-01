@@ -39,8 +39,12 @@ class BatchController extends Controller
     }
 
     public function destroy(Batch $batch) {
+        if ($batch->batchSchool()->count() > 0) {
+            return redirect()->route('batch.index')->with('error', 'Tidak dapat menghapus data ini karena memiliki relasi dengan data yang lain.');
+        }
+        
         $batch->delete();
 
-        return redirect()->route('batch.index');
+        return redirect()->route('batch.index')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -41,26 +41,27 @@ class MajorController extends Controller
     }
 
     public function destroy(Major $major) {
+        if ($major->batchSchoolMajor()->count() > 0) {
+            return redirect()->route('major.index')->with('error', 'Tidak dapat menghapus data ini karena memiliki relasi dengan data yang lain.');
+        }
+
         $major->delete();
 
-        return redirect()->route('major.index');
+        return redirect()->route('major.index')->with('success', 'Data berhasil dihapus.');
     }
 
-    public function getData() {
-        return DataTables::of(Major::query())
-        ->addColumn('action', function ($major) {
-            return '
-                <div class="flex justify-center space-x-2 mb-3 mt-3">
-                    <a href="'.route('major.show', $major->id).'" class="px-4 py-2  bg-sky-500 hover:bg-sky-700 text-white rounded-md">Detail</a>
-                    <a href="'.route('major.edit', $major->id).'" class="px-4 py-2  bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
-                    <form action="'.route('major.destroy', $major->id).'" method="post" onsubmit="return confirmDelete(event)">
-                        '.csrf_field().'
-                        '.method_field('DELETE').'
-                        <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
-                    </form>
-                </div>
-            ';
-        })
-        ->make(true);
+    public function getData(Request $request) {
+        if (!$request->ajax()){
+            return response()->json(['error' => 'Invalid request'], 400);
+        }
+        
+        $majors = Major::query();
+    
+        return DataTables::of($majors)
+            ->addColumn('action', function ($major) {
+                return view('major.partials.actions', compact('major'))->render();
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 }

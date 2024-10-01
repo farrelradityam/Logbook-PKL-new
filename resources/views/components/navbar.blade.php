@@ -35,11 +35,15 @@
                 x-transition:leave="transition ease-in duration-75 transform"
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-95"
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                class="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                <a href="#" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                <a href="#" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-2">Log out</button>
+                </form>
+
               </div>
             </div>
           </div>
@@ -82,9 +86,14 @@
 
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
+          <a href="#" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
+          <a href="#" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+          <form action="{{ route('logout') }}" method="POST" class="inline">
+            @csrf
+            <button type="submit" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">
+                Log out
+            </button>
+        </form>
         </div>
       </div>
     </div>

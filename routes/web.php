@@ -239,24 +239,28 @@ Route::get('/c', function () {
 
 
 Route::get('/', function () {
-    return view('home',['title' => 'Home']);
+    return view('welcome',['title' => 'Home']);
 });
+
+Route::get('/home', function () {
+    return view('home',['title' => 'Home']);
+})->middleware('auth');
 
 Route::get('/calendar', function () {
     return view('calendar',['title' =>'Crud']);
-});
+})->middleware('auth');
 
 Route::get('/team', function () {
     return view('team',['title' =>'Team']);
-});
+})->middleware('auth');
 
 Route::get('/projects', function () {
     return view('projects',['title' =>'Projects']);
-});
+})->middleware('auth');
 
 Route::get('/about', function () {
     return view('about',['title' =>'About']);
-});
+})->middleware('auth');
 
 
 Route::resource('batch', BatchController::class);
