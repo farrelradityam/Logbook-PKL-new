@@ -74,27 +74,21 @@
 </div>
 
 <script>
-    const togglePassword = document.querySelector('#togglePassword');
-    const passwordField = document.querySelector('#floatingPassword');
+    function togglePasswordVisibility(toggleButtonId, passwordFieldId) {
+        const toggleButton = document.querySelector(toggleButtonId);
+        const passwordField = document.querySelector(passwordFieldId);
 
-    togglePassword.addEventListener('click', function () {
-        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordField.setAttribute('type', type);
-        
-        this.classList.toggle('bi-eye');
-        this.classList.toggle('bi-eye-slash');
-    });
+        toggleButton.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+    }
 
-    const togglePasswordConfirmation = document.querySelector('#togglePasswordConfirmation');
-    const passwordConfirmationField = document.querySelector('#floatingPasswordConfirmation');
-
-    togglePasswordConfirmation.addEventListener('click', function () {
-        const type = passwordConfirmationField.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordConfirmationField.setAttribute('type', type);
-        
-        this.classList.toggle('bi-eye');
-        this.classList.toggle('bi-eye-slash');
-    });
+    togglePasswordVisibility('#togglePassword', '#floatingPassword');
+    togglePasswordVisibility('#togglePasswordConfirmation', '#floatingPasswordConfirmation');
 </script>
 </body>
 </html>

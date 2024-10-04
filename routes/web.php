@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Models\Activity;
@@ -239,28 +240,37 @@ Route::get('/c', function () {
 
 
 Route::get('/', function () {
-    return view('welcome',['title' => 'Home']);
+    return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home',['title' => 'Home']);
-})->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
-Route::get('/calendar', function () {
-    return view('calendar',['title' =>'Crud']);
-})->middleware('auth');
 
-Route::get('/team', function () {
-    return view('team',['title' =>'Team']);
-})->middleware('auth');
 
-Route::get('/projects', function () {
-    return view('projects',['title' =>'Projects']);
-})->middleware('auth');
+    Route::get('/home', function () {
+        return view('home', ['title' => 'Home']);
+    });
 
-Route::get('/about', function () {
-    return view('about',['title' =>'About']);
-})->middleware('auth');
+    Route::get('/calendar', function () {
+        return view('calendar', ['title' => 'Crud']);
+    });
+
+    Route::get('/team', function () {
+        return view('team', ['title' => 'Team']);
+    });
+
+    Route::get('/projects', function () {
+        return view('projects', ['title' => 'Projects']);
+    });
+
+    Route::get('/about', function () {
+        return view('about', ['title' => 'About']);
+    });
+});
+
 
 
 Route::resource('batch', BatchController::class);

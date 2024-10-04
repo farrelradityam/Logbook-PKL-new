@@ -28,6 +28,7 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <!-- <script src="https://cdn.datatables.net/v/bs5/dt-2.1.6/datatables.min.js"></script> -->
 <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
