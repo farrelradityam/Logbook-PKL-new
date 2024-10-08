@@ -32,4 +32,9 @@ class Activity extends Model
     public function validatedByMentor(){
         return $this->belongsTo(Mentor::class, 'mentor_id');
     }
+
+    public function industryAdvisor(){
+        return $this->hasMany(IndustryAdvisor::class);
+    }
+
 }

@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function show()
     {
         $user = Auth::user();
         return view('profile', compact('user'), ['title' => 'PROFILE']);

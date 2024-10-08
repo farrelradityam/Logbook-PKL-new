@@ -13,6 +13,7 @@ use App\Models\Student;
 use App\Models\ScheduleOfActivity;
 use App\Models\Mentor;
 use App\Models\Activity;
+use App\Models\IndustryAdvisor;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use Illuminate\Database\Seeder;
@@ -56,6 +57,7 @@ class DatabaseSeeder extends Seeder
         ScheduleOfActivity::factory(50)->create();
         Mentor::factory(50)->create();
         Activity::factory(50)->create();
+        IndustryAdvisor::factory(50)->create();
 
     }
 }

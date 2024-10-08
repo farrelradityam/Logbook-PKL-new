@@ -18,4 +18,8 @@ class ScheduleOfActivity extends Model
     public function batchSchoolMajor(){
         return $this->belongsTo(BatchSchoolMajor::class);
     }
+
+    public function industryAdvisor(){
+        return $this->hasMany(IndustryAdvisor::class);
+    }
 }

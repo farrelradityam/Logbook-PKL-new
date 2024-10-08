@@ -24,7 +24,7 @@
                 <h3 class="text-xl font-semibold mb-4">Update Password</h3>
                 <form action="{{ route('profile.updatePassword') }}" method="POST">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
                     <div class="mb-4 w-1/2">
                         <label for="current_password" class="block text-gray-700">Current Password</label>
                         <input type="password" name="current_password" id="current_password" required class="mt-1 block w-full p-2 border border-gray-400 rounded-md">

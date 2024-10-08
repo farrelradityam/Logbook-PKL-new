@@ -39,7 +39,7 @@
                 x-transition:leave-end="opacity-0 scale-95"
                 class="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="{{ route('profile') }}" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+                <a href="{{ route('profile.show') }}" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
                 <a href="#" class="block w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-950 hover:translate-y-[-2px] transition-transform duration-150 ease-in-out" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
@@ -97,7 +97,7 @@
 
         <hr class="border-t border-gray-600 ml-6 mr-6 mt-2">
         <div class="mt-1 space-y-1 px-2 ml-3 mr-3">
-          <a href="{{ route('profile') }}" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Profile</a>
+          <a href="{{ route('profile.show') }}" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Profile</a>
           <a href="#" class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
           <form action="{{ route('logout') }}" method="POST" class="inline">
             @csrf
