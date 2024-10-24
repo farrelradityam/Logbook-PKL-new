@@ -247,6 +247,12 @@ Route::middleware('auth')->group(function () {
     Route::singleton('profile', ProfileController::class);
     Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
+    Route::group(['middleware' => ['role:admin-super|admin-pkl']], function () {
+        Route::get('batch', function () {
+            return view('batch');
+        });
+    });
+
     Route::get('/home', function () {
         return view('home', ['title' => 'Home']);
     });
@@ -267,7 +273,6 @@ Route::middleware('auth')->group(function () {
         return view('about', ['title' => 'About']);
     });
 });
-
 
 
 Route::resource('batch', BatchController::class);

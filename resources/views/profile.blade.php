@@ -1,5 +1,31 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    @if(session('success'))
+        <div id="success-message" class="bg-green-600 text-white text-lg p-4 mb-4 rounded relative flex items-center justify-between transition duration-500 ease-in-out transform">
+            <div class="flex items-center space-x-2">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ session('success') }}</span>
+            </div>
+            <button type="button" class="text-white font-bold hover:text-gray-300 text-3xl mb-1" onclick="closeAlert('success-message')">&times;</button>
+        </div>
+    @endif
+
+    <script>
+        function closeAlert(id) {
+            const element = document.getElementById(id);
+            element.classList.add('opacity-0');
+            setTimeout(function() {
+                element.style.display = 'none';
+            }, 500);
+        }
+
+        setTimeout(() => {
+            closeAlert('success-message');
+        }, 5000);
+    </script>
+
     <body class="bg-gray-100">
         <div class="container mx-auto">
             <div class="bg-white shadow-lg rounded-lg p-6">

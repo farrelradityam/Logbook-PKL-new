@@ -9,6 +9,7 @@
         "laravel/fortify": "^1.24",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "spatie/laravel-permission": "^6.9",
         "yajra/laravel-datatables-oracle": "^11.1"
     },
     "require-dev": {

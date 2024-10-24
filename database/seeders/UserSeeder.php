@@ -15,15 +15,25 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::create([
-        //     'name' => 'farrel raditya marset',
-        //     'email' => 'farrelradityam@gmail.com',
-        //     'email_verified_at' => now(),
-        //     'password' => Hash::make('password'),
-        //     'remember_token' => str::random(10)
-        // ]);
+        $admin = User::create([
+            'name' => 'admin-super',
+            'email' => 'adminsuper@gmail.com',
+            'password' =>bcrypt('12345678')
+        ]);
+        $admin->assignRole('admin-super');
 
-        // User::factory(3)->create();
+        $admin = User::create([
+            'name' => 'admin-pkl',
+            'email' => 'adminpkl@gmail.com',
+            'password' =>bcrypt('12345678')
+        ]);
+        $admin->assignRole('admin-pkl');
 
+        $siswa = User::create([
+            'name' => 'siswa',
+            'email' => 'siswa@gmail.com',
+            'password' =>bcrypt('12345678')
+        ]);
+        $siswa->assignRole('siswa');
     }
 }

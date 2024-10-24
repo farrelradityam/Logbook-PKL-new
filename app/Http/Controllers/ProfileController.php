@@ -29,7 +29,7 @@ class ProfileController extends Controller
             'email' => $request->email,
         ]);
     
-        return redirect()->route('profile');
+        return redirect()->back()->with('success', 'Data Berhasil diganti');
     }
 
     public function updatePassword(Request $request) {
@@ -43,6 +43,6 @@ class ProfileController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data Berhasil diganti');
     }
 }
