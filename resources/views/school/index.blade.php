@@ -24,7 +24,9 @@
     <div class="flex items-center justify-between">
         <h4 class="text-xl font-semibold mb-4">List School</h4>
         <div class="mb-5 ">
+            @if (auth()->user()->hasRole('admin-super'))
             <a href="{{ route('school.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
+            @endif
         </div>
     </div>
 
@@ -43,13 +45,18 @@
                     <td class="px-4 py-2 text-center ">{{ $school->id }}</td>
                     <td class="px-4 py-2 text-center ">{{ $school->name }}</td>
                     <td class="flex justify-center space-x-2 mb-3 mt-3">
+                        @if (auth()->user()->hasAnyRole('admin-super', 'admin-pkl'))
                         <a href="{{ route('school.show', $school->id) }}" class="px-4 py-2 bg-sky-500 hover:bg-sky-700 text-white rounded-md">Detail</a>
+                        @endif
+
+                        @if (auth()->user()->hasRole('admin-super'))
                         <a href="{{ route('school.edit', $school->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
                         <form action="{{ route('school.destroy', $school->id) }}" method="POST" onsubmit="return confirmDelete(event, this)">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

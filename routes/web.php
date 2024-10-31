@@ -248,9 +248,9 @@ Route::middleware('auth')->group(function () {
     Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
     Route::group(['middleware' => ['role:admin-super|admin-pkl']], function () {
-        Route::get('batch', function () {
-            return view('batch');
-        });
+        Route::resource('batch', BatchController::class);
+        Route::resource('school', SchoolController::class);
+
     });
 
     Route::get('/home', function () {
@@ -275,8 +275,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::resource('batch', BatchController::class);
-Route::resource('school', SchoolController::class);
 Route::resource('major', MajorController::class);
 
 Route::get('/data', [MajorController::class, 'getData'])->name('data');

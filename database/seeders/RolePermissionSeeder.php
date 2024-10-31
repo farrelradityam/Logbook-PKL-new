@@ -14,11 +14,11 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create(['name' => 'view all batch']);
-        Permission::create(['name' => 'view batch by id']);
-        Permission::create(['name' => 'edit batch']);
-        Permission::create(['name' => 'update batch']);
-        Permission::create(['name' => 'delete batch']);
+        Permission::create(['name' => 'view all data']);
+        Permission::create(['name' => 'view data by id']);
+        Permission::create(['name' => 'edit data']);
+        Permission::create(['name' => 'update data']);
+        Permission::create(['name' => 'delete data']);
 
 
         Role::create(['name' => 'admin-super']);
@@ -29,10 +29,10 @@ class RolePermissionSeeder extends Seeder
 
 
         $adminSuper = Role::findByName('admin-super');
-        $adminSuper->givePermissionTo(['view all batch', 'view batch by id', 'edit batch', 'update batch', 'delete batch']);
+        $adminSuper->givePermissionTo(['view all data', 'view data by id', 'edit data', 'update data', 'delete data']);
 
         $adminPkl = Role::findByName('admin-pkl');
-        $adminPkl->givePermissionTo('view all batch');
+        $adminPkl->givePermissionTo('view all data');
 
         $siswa = Role::findByName('siswa');
     }
