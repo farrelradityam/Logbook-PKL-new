@@ -11,7 +11,10 @@
 
             <div class=" space-x-3 mt-10 mb-3 ">
                 <a href="{{ route('major.index') }}" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-md">Back</a>
+
+                @can('edit-major')
                 <a href="{{ route('major.edit', $major->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
+                @endcan
             </div>
         </div>
     </div>

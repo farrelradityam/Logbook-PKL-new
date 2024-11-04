@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
         Mentor::factory(50)->create();
         Activity::factory(50)->create();
         IndustryAdvisor::factory(50)->create();
+        
 
     }
 }

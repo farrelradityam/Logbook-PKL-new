@@ -247,19 +247,13 @@ Route::middleware('auth')->group(function () {
     Route::singleton('profile', ProfileController::class);
     Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
-    Route::group(['middleware' => ['role:admin-super|admin-pkl']], function () {
-        Route::resource('batch', BatchController::class);
-        Route::resource('school', SchoolController::class);
-
-    });
-
     Route::get('/home', function () {
         return view('home', ['title' => 'Home']);
     });
 
-    Route::get('/calendar', function () {
+    Route::get('/crud', function () {
         return view('calendar', ['title' => 'Crud']);
-    });
+    })->middleware(['permission:view-all-batch|view-all-school|view-all-major']);
 
     Route::get('/team', function () {
         return view('team', ['title' => 'Team']);
@@ -275,6 +269,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::resource('batch', BatchController::class);
+Route::resource('school', SchoolController::class);
 Route::resource('major', MajorController::class);
 
 Route::get('/data', [MajorController::class, 'getData'])->name('data');

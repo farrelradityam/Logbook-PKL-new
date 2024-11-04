@@ -24,9 +24,9 @@
     <div class="flex items-center justify-between">
         <h4 class="text-xl font-semibold mb-4">List Batch</h4>
         <div class="mb-5 ">
-            @if (auth()->user()->hasRole('admin-super'))
-            <a href="{{ route('batch.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
-            @endif
+        @can('create-batch')
+        <a href="{{ route('batch.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
+        @endcan
         </div>
     </div>
 
@@ -44,18 +44,21 @@
                 <td class="px-4 py-2 text-center">{{ $batch->id }}</td>
                 <td class="px-4 py-2 text-center">{{ $batch->year }}</td>
                 <td class="flex justify-center space-x-2 mb-3 mt-3">
-                    @if (auth()->user()->hasAnyRole('admin-super', 'admin-pkl'))
+                    @can('view-all-batch')
                     <a href="{{ route('batch.show', $batch->id) }}" class="px-4 py-2 bg-sky-500 hover:bg-sky-700 text-white rounded-md">Detail</a>
-                    @endif
+                    @endcan
 
-                    @if (auth()->user()->hasRole('admin-super'))
-                    <a href="{{ route('batch.edit', $batch->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
-                    <form action="{{ route('batch.destroy', $batch->id) }}" method="post" onsubmit="return confirmDelete(event)">
-                        @csrf
-                        @method('DELETE')
-                        <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
-                    </form>
-                    @endif
+                    @can('edit-batch')
+                        <a href="{{ route('batch.edit', $batch->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
+                    @endcan
+
+                    @can('delete-batch')
+                        <form action="{{ route('batch.destroy', $batch->id) }}" method="post" onsubmit="return confirmDelete(event)" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
+                        </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach

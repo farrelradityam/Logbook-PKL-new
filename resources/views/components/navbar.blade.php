@@ -11,8 +11,8 @@
               <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
               <x-nav-link href="/team" :active="request()->is('team')">Team</x-nav-link>
               <x-nav-link href="/projects" :active="request()->is('projects')">Projects</x-nav-link>
-              @if (auth()->user()->hasAnyRole('admin-super', 'admin-pkl'))
-              <x-nav-link href="/calendar" :active="request()->is('calendar')">Crud</x-nav-link>
+              @if (auth()->user()->can(['view-all-batch', 'view-all-school', 'view-all-major']))
+              <x-nav-link href="/crud" :active="request()->is('calendar')">Crud</x-nav-link>
               @endif
               <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             </div>
@@ -78,8 +78,8 @@
         <x-nav-link href="home" :active="request()->is('home')">Home</x-nav-link>
         <x-nav-link href="team" :active="request()->is('team')">Team</x-nav-link>
         <x-nav-link href="projects" :active="request()->is('projects')">Projects</x-nav-link>
-        @if (auth()->user()->hasAnyRole('admin-super', 'admin-pkl'))
-        <x-nav-link href="calendar" :active="request()->is('calendar')">Crud</x-nav-link>
+        @if (auth()->user()->can(['view-all-batch', 'view-all-school', 'view-all-major']))
+        <x-nav-link href="crud" :active="request()->is('calendar')">Crud</x-nav-link>
         @endif
         <x-nav-link href="about" :active="request()->is('about')">About</x-nav-link>
       </div>

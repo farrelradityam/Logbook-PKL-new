@@ -11,9 +11,9 @@
             <div class=" space-x-3 mt-10 mb-3 ">
                 <a href="{{ route('batch.index') }}" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-md">Back</a>
 
-                @if (auth()->user()->hasRole('admin-super'))
+                @can('edit-batch')
                 <a href="{{ route('batch.edit', $batch->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
-                @endif
+                @endcan
             </div>
         </div>
     </div>

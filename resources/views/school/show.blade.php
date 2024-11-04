@@ -12,9 +12,9 @@
             <div class="space-x-3 mt-10 mb-3 ">
                 <a href="{{ route('school.index') }}" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-md">Back</a>
 
-                @if (auth()->user()->hasRole('admin-super'))
+                @can('edit-school')
                 <a href="{{ route('school.edit', $school->id) }}" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white rounded-md">Edit</a>
-                @endif
+                @endcan
             </div>
         </div>
     </div>

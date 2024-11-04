@@ -13,10 +13,14 @@ use function Laravel\Prompts\confirm;
 class MajorController extends Controller
 {
     public function index() {
+        abort_unless(auth()->user()->can('view-all-major'), 403);
+
         return view('major.index', ['title' => 'Server-Side']);
     }
 
     public function create() {
+        abort_unless(auth()->user()->can('create-major'), 403);
+
         return view('major.create', ['title' => 'CREATE MAJOR']);
     }
 
@@ -27,10 +31,14 @@ class MajorController extends Controller
     }
 
     public function show(Major $major) {
+        abort_unless(auth()->user()->can('view-all-major'), 403);
+
         return view('major.show', compact('major'), ['title' => 'DETAIL MAJOR']);
     }
 
     public function edit(Major $major) {
+        abort_unless(auth()->user()->can('edit-major'), 403);
+
         return view('major.edit', compact('major'), ['title' => 'EDIT MAJOR']);
     }
 
@@ -41,6 +49,8 @@ class MajorController extends Controller
     }
 
     public function destroy(Major $major) {
+        abort_unless(auth()->user()->can('delete-major'), 403);
+
         if ($major->batchSchoolMajor()->count() > 0) {
             return redirect()->route('major.index')->with('error', 'Tidak dapat menghapus data ini karena memiliki relasi dengan data yang lain.');
         }
