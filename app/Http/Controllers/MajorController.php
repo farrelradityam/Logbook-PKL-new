@@ -15,7 +15,7 @@ class MajorController extends Controller
     public function index() {
         abort_unless(auth()->user()->can('view-all-major'), 403);
 
-        return view('major.index', ['title' => 'Server-Side']);
+        return view('major.index', ['title' => 'CRUD MAJOR']);
     }
 
     public function create() {

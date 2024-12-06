@@ -4,13 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles, Impersonate;
 
     /**
      * The attributes that are mass assignable.
@@ -57,4 +60,9 @@ class User extends Authenticatable
     public function activity(){
         return $this->hasMany(Activity::class);
     }
+    
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+
 }

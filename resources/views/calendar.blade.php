@@ -7,8 +7,8 @@
         <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>
         <a href="{{ route('school.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data School</a>
         <a href="{{ route('major.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Major</a>
-        <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>
-        <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>
+        <a href="{{ route('user.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data User</a>
+        <a href="{{ route('student.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Student</a>
         <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>
         <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>
         <a href="{{ route('batch.index') }}" class="text-3xl block text-center w-full px-6 py-10 font-bold bg-white rounded-lg shadow-md hover:bg-violet-950 hover:text-white transition duration-500">Data Batch</a>

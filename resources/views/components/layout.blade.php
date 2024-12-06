@@ -32,18 +32,57 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.1.7/js/dataTables.tailwindcss.js"></script>
+<!-- <script src="https://cdn.datatables.net/2.1.7/js/dataTables.tailwindcss.js"></script> -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="{{ asset('app.js') }}"></script>
+
 
 
 <script>
 $(document).ready(function () {
-  $('#school-table').DataTable();
+  $('#school-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('dataSchool') }}",
+    
+    columns: [
+      {data: 'id', className: 'text-center'},
+      {data: 'name', className: 'text-center'},
+      {data: 'action', className: 'text-center', orderable: false, searchable: false},
+      ]
+  });
+
+  $('#user-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('dataUser') }}",
+    
+    columns: [
+      {data: 'id', className: 'text-center'},
+      {data: 'name', className: 'text-center'},
+      {data: 'roles', className: 'text-center'},
+      {data: 'action', className: 'text-center', orderable: false, searchable: false},
+      ]
+  });
+
+  $('#batch-table').DataTable();
+
+  $('#student-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('dataStudent') }}",
+    
+    columns: [
+      {data: 'id', className: 'text-center'},
+      {data: 'name', className: 'text-center'},
+      {data: 'action', className: 'text-center', orderable: false, searchable: false},
+      ]
+  });
 
   $('#major-table').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "{{ route('data') }}",
+    ajax: "{{ route('dataMajor') }}",
     
     columns: [
       {data: 'id', className: 'text-center'},
@@ -52,13 +91,6 @@ $(document).ready(function () {
       ]
   }); 
 });
-</script>
-<script>
-function confirmDelete(event) {
-  if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-    return true;
-  }
-}
 </script>
 </body>
 </html>

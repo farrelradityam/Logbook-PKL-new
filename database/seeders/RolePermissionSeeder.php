@@ -14,8 +14,15 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $permissions = ['view-all-batch', 'create-batch', 'edit-batch', 'delete-batch', 'view-all-school', 'create-school', 'edit-school', 'delete-school', 'view-all-major', 'create-major', 'edit-major', 'delete-major'];
-
+        $permissions = [
+            'view-all-batch', 'create-batch', 'edit-batch', 'delete-batch',
+            'view-all-school', 'create-school', 'edit-school', 'delete-school',
+            'view-all-major', 'create-major', 'edit-major', 'delete-major',
+            'view-all-user', 'create-user', 'edit-user', 'delete-user',
+            'view-all-student', 'create-student', 'edit-student', 'delete-student',
+            'impersonate', 'view-crud',
+        ];
+        
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
@@ -28,7 +35,13 @@ class RolePermissionSeeder extends Seeder
 
 
         $adminPkl = Role::findByName('admin-pkl');
-        $adminPkl->givePermissionTo('view-all-batch', 'view-all-school', 'view-all-major');
+        $adminPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
+
+        $pembimbingPkl = Role::findByName('pembimbing-pkl');
+        $pembimbingPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
+        
+        $pembimbingSekolah = Role::findByName('pembimbing-sekolah');
+        $pembimbingSekolah->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
 
     }
 }

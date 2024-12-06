@@ -14,7 +14,7 @@ class BatchController extends Controller
     public function index() {
         abort_unless(auth()->user()->can('view-all-batch'), 403);
 
-        $batches = Batch::paginate(5);
+        $batches = Batch::all();
         return view('batch.index', compact('batches'), ['title' => 'CRUD BATCH']);
     }
 

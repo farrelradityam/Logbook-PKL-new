@@ -8,7 +8,7 @@
     @endcan
 
     @can('delete-major')
-    <form action="{{ route('major.destroy', $major->id) }}" method="POST" onsubmit="return confirmDelete(event)">
+    <form action="{{ route('major.destroy', $major->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
         @csrf
         @method('DELETE')
         <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>

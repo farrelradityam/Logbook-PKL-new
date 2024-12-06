@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <table class="table-auto w-full bg-gray-300 rounded-lg shadow">
+    <table id="batch-table" class="table-auto w-full bg-gray-300 rounded-lg shadow">
         <thead class="bg-gray-200">
             <tr>
                 <th class="px-4 py-2 text-center w-2/12">ID</th>
@@ -53,7 +53,7 @@
                     @endcan
 
                     @can('delete-batch')
-                        <form action="{{ route('batch.destroy', $batch->id) }}" method="post" onsubmit="return confirmDelete(event)" style="display:inline;">
+                        <form action="{{ route('batch.destroy', $batch->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
@@ -64,7 +64,4 @@
             @endforeach
         </tbody>
     </table>
-    <div class="mt-5">
-        {{ $batches->links() }}
-    </div>
 </x-layout>

@@ -5,6 +5,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use App\Models\Activity;
 use App\Models\Batch;
 use App\Models\BatchSchool;
@@ -77,166 +78,166 @@ use Yajra\DataTables\Facades\DataTables;
 // });
 
 
-Route::get('/a', function () {
+// Route::get('/a', function () {
 
-        dump('1. data 1 user pertama');
-        $soal1 = User::find(1)->toArray();
+//         dump('1. data 1 user pertama');
+//         $soal1 = User::find(1)->toArray();
 
-        dump($soal1);
+//         dump($soal1);
 
-        dump('2. data seluruh user');
-        $soal2 = User::all()->toArray();
+//         dump('2. data seluruh user');
+//         $soal2 = User::all()->toArray();
 
-        dump($soal2);
+//         dump($soal2);
 
-        dump('3. seluruh data user dengan id > 5 (nomor id 6, 7, 8, dst)');
-        $soal3 = User::where('id', '>', 5)->get()->toArray();
+//         dump('3. seluruh data user dengan id > 5 (nomor id 6, 7, 8, dst)');
+//         $soal3 = User::where('id', '>', 5)->get()->toArray();
 
-        dump($soal3);
+//         dump($soal3);
 
-        dump('4. data 10 user pertama dengan id > 5');
-        $soal4 = User::where('id', '>', 5)->limit(10)->get()->toArray();
+//         dump('4. data 10 user pertama dengan id > 5');
+//         $soal4 = User::where('id', '>', 5)->limit(10)->get()->toArray();
 
-        dump($soal4); 
+//         dump($soal4); 
 
-        dump('5. data 10 user pertama dengan id > 5, diurutkan berdasarkan abjad nama/emailnya (A ke Z)');
-        $soal5 = User::where('id', '>', 5)->limit(10)->orderBy('name', 'asc')->get()->toArray();
+//         dump('5. data 10 user pertama dengan id > 5, diurutkan berdasarkan abjad nama/emailnya (A ke Z)');
+//         $soal5 = User::where('id', '>', 5)->limit(10)->orderBy('name', 'asc')->get()->toArray();
 
-        dump($soal5);
+//         dump($soal5);
 
-        dump('6. data 10 user pertama dengan id > 5, diurutkan berdasarkan tgl created_at (baru ke lama)');
-        $soal6 = User::where('id', '>', 5)->orderBy('created_at', 'desc')->limit(10)->get()->toArray();
+//         dump('6. data 10 user pertama dengan id > 5, diurutkan berdasarkan tgl created_at (baru ke lama)');
+//         $soal6 = User::where('id', '>', 5)->orderBy('created_at', 'desc')->limit(10)->get()->toArray();
 
-        dump($soal6);
+//         dump($soal6);
 
-        dump('7. data user pertama dengan id > 5');
-        $soal7 = User::where('id', '>', 5)->first()->toArray();   
+//         dump('7. data user pertama dengan id > 5');
+//         $soal7 = User::where('id', '>', 5)->first()->toArray();   
 
-        dump($soal7);
+//         dump($soal7);
     
-        dump('8. data user dengan id "5"');
-        $soal8 = User::find(5)->toArray();
+//         dump('8. data user dengan id "5"');
+//         $soal8 = User::find(5)->toArray();
 
-        dump($soal8);
+//         dump($soal8);
 
-        dump('9. data user dengan id "5", namun hanya di select nama dan email nya');
-        $soal9 = User::where('id', 5)->select('name', 'email')->get()->toArray();
+//         dump('9. data user dengan id "5", namun hanya di select nama dan email nya');
+//         $soal9 = User::where('id', 5)->select('name', 'email')->get()->toArray();
 
-        dump($soal9);
+//         dump($soal9);
 
-        dump('10. data user dengan kolom nama/email berawalan dengan huruf "A"');
-        $soal10 = User::where('name', 'LIKE', 'A%')->get()->toArray();
+//         dump('10. data user dengan kolom nama/email berawalan dengan huruf "A"');
+//         $soal10 = User::where('name', 'LIKE', 'A%')->get()->toArray();
 
-        dump($soal10);
+//         dump($soal10);
 
-        dump('11. data user dengan kolom nama/email berawalan dengan huruf "A" DAN memiliki id > 5');
-        $soal11 = User::where('id', '>', 5)->where('name', 'LIKE', 'A%')->get()->toArray();
+//         dump('11. data user dengan kolom nama/email berawalan dengan huruf "A" DAN memiliki id > 5');
+//         $soal11 = User::where('id', '>', 5)->where('name', 'LIKE', 'A%')->get()->toArray();
 
-        dump($soal11);
+//         dump($soal11);
 
-        dump('12. data user dengan kolom nama/email berawalan dengan huruf "A" ATAU mengandung kata "admin"');
-        $soal12 = User::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%admin%')->get()->toArray();
+//         dump('12. data user dengan kolom nama/email berawalan dengan huruf "A" ATAU mengandung kata "admin"');
+//         $soal12 = User::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%admin%')->get()->toArray();
 
-        dump($soal12);
-});
+//         dump($soal12);
+// });
 
-Route::get('/b', function () {
+// Route::get('/b', function () {
 
  
-    dump('1. data 1 siswa pertama');
-    $soal11 = Student::first()->toArray();
+//     dump('1. data 1 siswa pertama');
+//     $soal11 = Student::first()->toArray();
 
-    dump($soal11);
+//     dump($soal11);
 
-    dump('2. data seluruh siswa');
-    $soal22 = Student::all()->toArray();
+//     dump('2. data seluruh siswa');
+//     $soal22 = Student::all()->toArray();
 
-    dump($soal22);
+//     dump($soal22);
 
-    dump('3. seluruh data siswa dengan id > 5 (nomor id 6, 7, 8, dst)');
-    $soal33 = Student::where('id', '>', 5)->get()->toArray();
+//     dump('3. seluruh data siswa dengan id > 5 (nomor id 6, 7, 8, dst)');
+//     $soal33 = Student::where('id', '>', 5)->get()->toArray();
 
-    dump($soal33);
+//     dump($soal33);
 
-    dump('4. data 10 siswa pertama dengan id > 5');
-    $soal44 = Student::where('id', '>', 5)->limit(10)->get()->toArray();
+//     dump('4. data 10 siswa pertama dengan id > 5');
+//     $soal44 = Student::where('id', '>', 5)->limit(10)->get()->toArray();
 
-    dump($soal44); 
+//     dump($soal44); 
 
-    dump('5. data 10 siswa pertama dengan id > 5, diurutkan berdasarkan abjad nama/emailnya (A ke Z)');
-    $soal55 = Student::where('id', '>', 5)->limit(10)->orderBy('name', 'asc')->get()->toArray();
+//     dump('5. data 10 siswa pertama dengan id > 5, diurutkan berdasarkan abjad nama/emailnya (A ke Z)');
+//     $soal55 = Student::where('id', '>', 5)->limit(10)->orderBy('name', 'asc')->get()->toArray();
 
-    dump($soal55);
+//     dump($soal55);
 
-    dump('6. data 10 siswa pertama dengan id > 5, diurutkan berdasarkan tgl created_at (baru ke lama)');
-    $soal66 = Student::where('id', '>', 5)->orderBy('created_at', 'desc')->limit(10)->get()->toArray();
-    dump($soal66);
+//     dump('6. data 10 siswa pertama dengan id > 5, diurutkan berdasarkan tgl created_at (baru ke lama)');
+//     $soal66 = Student::where('id', '>', 5)->orderBy('created_at', 'desc')->limit(10)->get()->toArray();
+//     dump($soal66);
 
-    dump('7. data siswa pertama dengan id > 5');
-    $soal77 = Student::where('id', '>', 5)->first()->toArray();   
+//     dump('7. data siswa pertama dengan id > 5');
+//     $soal77 = Student::where('id', '>', 5)->first()->toArray();   
 
-    dump($soal77);
+//     dump($soal77);
 
-    dump('8. data siswa dengan id "5"');
-    $soal88 = Student::find(5)->toArray();
+//     dump('8. data siswa dengan id "5"');
+//     $soal88 = Student::find(5)->toArray();
 
-    dump($soal88);
+//     dump($soal88);
 
-    dump('9. data siswa dengan id "5", namun hanya di select nama dan email nya');
-    $soal99 = Student::where('id', 5)->select('name', 'phone_number')->get()->toArray();
+//     dump('9. data siswa dengan id "5", namun hanya di select nama dan email nya');
+//     $soal99 = Student::where('id', 5)->select('name', 'phone_number')->get()->toArray();
 
-    dump($soal99);
+//     dump($soal99);
 
-    dump('10. data siswa dengan kolom nama/email berawalan dengan huruf "A"');
-    $soal10 = Student::where('name', 'LIKE', 'A%')->get()->toArray();
+//     dump('10. data siswa dengan kolom nama/email berawalan dengan huruf "A"');
+//     $soal10 = Student::where('name', 'LIKE', 'A%')->get()->toArray();
 
-    dump($soal10);
+//     dump($soal10);
 
-    dump('11. data siswa dengan kolom nama/email berawalan dengan huruf "A" DAN memiliki id > 5');
-    $soal111 = Student::where('id', '>', 5)->where('name', 'LIKE', 'A%')->get()->toArray();
+//     dump('11. data siswa dengan kolom nama/email berawalan dengan huruf "A" DAN memiliki id > 5');
+//     $soal111 = Student::where('id', '>', 5)->where('name', 'LIKE', 'A%')->get()->toArray();
 
-    dump($soal111);
+//     dump($soal111);
 
-    dump('12. data siswa dengan kolom nama/email berawalan dengan huruf "A" ATAU mengandung kata "putri"');
-    $soal122 = Student::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%putri%')->get()->toArray();
+//     dump('12. data siswa dengan kolom nama/email berawalan dengan huruf "A" ATAU mengandung kata "putri"');
+//     $soal122 = Student::where('name', 'LIKE', 'A%')->orWhere('name', 'LIKE', '%putri%')->get()->toArray();
 
-    dump($soal122);
-});
+//     dump($soal122);
+// });
 
-Route::get('/c', function () {
+// Route::get('/c', function () {
 
-    dump('1.Bagaimana cara menampilkan daftar siswa yang ada di sekolah "SMKN 8 Probolinggo" dan diurutkan berdasarkan abjad (A - Z)');
-    dump(Student::whereRelation('batchSchoolMajor.batchSchool.school', 'name', 'SMKN 8 Probolinggo')->orderBy('name', 'asc')->get()->toArray());
+//     dump('1.Bagaimana cara menampilkan daftar siswa yang ada di sekolah "SMKN 8 Probolinggo" dan diurutkan berdasarkan abjad (A - Z)');
+//     dump(Student::whereRelation('batchSchoolMajor.batchSchool.school', 'name', 'SMKN 8 Probolinggo')->orderBy('name', 'asc')->get()->toArray());
 
-    dump('2.Bagaimana cara menampilkan semua jurusan yang memiliki setidaknya satu siswa terkait');
-    dump(Major::has('batchSchoolMajor')->get()->toArray());
+//     dump('2.Bagaimana cara menampilkan semua jurusan yang memiliki setidaknya satu siswa terkait');
+//     dump(Major::has('batchSchoolMajor')->get()->toArray());
 
-    dump('3.Bagaimana cara mendapatkan kegiatan yang diverifikasi oleh pembimbing dengan id 7');
-    dump(Activity::where('validated_by_mentor_id', 7)->get()->toArray());
+//     dump('3.Bagaimana cara mendapatkan kegiatan yang diverifikasi oleh pembimbing dengan id 7');
+//     dump(Activity::where('validated_by_mentor_id', 7)->get()->toArray());
 
-    dump('4.Bagaimana cara mendapatkan daftar User yang tidak memiliki pembimbing dan diurutkan berdasarkan abjad (A - Z)');
-    dump(User::doesntHave('mentor')->orderBy('name', 'asc')->get()->toArray());
+//     dump('4.Bagaimana cara mendapatkan daftar User yang tidak memiliki pembimbing dan diurutkan berdasarkan abjad (A - Z)');
+//     dump(User::doesntHave('mentor')->orderBy('name', 'asc')->get()->toArray());
 
-    dump('5.Bagaimana cara mendapatkan angkatan_sekolah yang memiliki jurusan dengan id 19');
-    dump(BatchSchool::whereRelation('batchSchoolMajor.major', 'id', 19)->get()->toArray());
+//     dump('5.Bagaimana cara mendapatkan angkatan_sekolah yang memiliki jurusan dengan id 19');
+//     dump(BatchSchool::whereRelation('batchSchoolMajor.major', 'id', 19)->get()->toArray());
 
-    dump('6.Bagaimana cara mendapatkan daftar User yang terhubung dengan Mentor yang bernama "Dimas Saptono" ');
-    dump(Mentor::whereRelation('user', 'name', 'Dimas Saptono')->get()->toArray());
+//     dump('6.Bagaimana cara mendapatkan daftar User yang terhubung dengan Mentor yang bernama "Dimas Saptono" ');
+//     dump(Mentor::whereRelation('user', 'name', 'Dimas Saptono')->get()->toArray());
 
-    dump('7.Bagaimana cara menampilkan User yang memiliki siswa dengan nomor telepon "0299 1456 4903" ');
-    dump(User::whereRelation('student', 'phone_number', '0299 1456 4903')->get()->toArray());
+//     dump('7.Bagaimana cara menampilkan User yang memiliki siswa dengan nomor telepon "0299 1456 4903" ');
+//     dump(User::whereRelation('student', 'phone_number', '0299 1456 4903')->get()->toArray());
 
-    dump('8.Bagaimana cara mendapatkan kegiatan yang dijadwalkan pada tanggal 1984-06-07');
-    dump(Activity::whereHas('scheduleOfActivity', function($query) {
-        $query->where('date', '1984-06-07');
-    })->get()->toArray());
+//     dump('8.Bagaimana cara mendapatkan kegiatan yang dijadwalkan pada tanggal 1984-06-07');
+//     dump(Activity::whereHas('scheduleOfActivity', function($query) {
+//         $query->where('date', '1984-06-07');
+//     })->get()->toArray());
 
-    dump('9.Bagaimana cara menampilkan daftar kegiatan yang terjadi di sekolah SMK 4 Ternate melalui siswa');
-    dump(Activity::whereRelation('student.batchSchoolMajor.batchSchool.school', 'name', 'SMK 4 Ternate')->get()->toArray());
+//     dump('9.Bagaimana cara menampilkan daftar kegiatan yang terjadi di sekolah SMK 4 Ternate melalui siswa');
+//     dump(Activity::whereRelation('student.batchSchoolMajor.batchSchool.school', 'name', 'SMK 4 Ternate')->get()->toArray());
 
-    dump('10.Bagaimana cara menampilkan siswa yang terdaftar pada angkatan dengan id 16 dan diurutkan berdasarkan abjad (A - Z)');
-    dump(Student::whereRelation('batchSchoolMajor.batchSchool', 'batch_id', 16)->orderBy('name', 'asc')->get()->toArray());
-});
+//     dump('10.Bagaimana cara menampilkan siswa yang terdaftar pada angkatan dengan id 16 dan diurutkan berdasarkan abjad (A - Z)');
+//     dump(Student::whereRelation('batchSchoolMajor.batchSchool', 'batch_id', 16)->orderBy('name', 'asc')->get()->toArray());
+// });
 
 
 Route::get('/', function () {
@@ -249,11 +250,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', function () {
         return view('home', ['title' => 'Home']);
-    });
+    })->name('home');
 
     Route::get('/crud', function () {
         return view('calendar', ['title' => 'Crud']);
-    })->middleware(['permission:view-all-batch|view-all-school|view-all-major']);
+    })->middleware(['permission:view-crud']);
 
     Route::get('/team', function () {
         return view('team', ['title' => 'Team']);
@@ -270,11 +271,19 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('batch', BatchController::class);
+Route::resource('student', StudentController::class);
+Route::get('/datastudent', [StudentController::class, 'getData'])->name('dataStudent');
 Route::resource('school', SchoolController::class);
+Route::get('/dataschool', [SchoolController::class, 'getData'])->name('dataSchool');
 Route::resource('major', MajorController::class);
+Route::get('/datamajor', [MajorController::class, 'getData'])->name('dataMajor');
+Route::resource('user', UserController::class);
+Route::get('/datauser', [UserController::class, 'getData'])->name('dataUser');
+Route::put('user/{user}/password', [UserController::class, 'updatePassword'])->name('user.updatePassword');
+Route::post('user/{id}/restore', [UserController::class, 'restore'])->name('user.restore');
 
-Route::get('/data', [MajorController::class, 'getData'])->name('data');
-
+Route::get('impersonate/{user}', [UserController::class, 'impersonate'])->name('impersonate.start');
+Route::get('stop-impersonate', [UserController::class, 'stopImpersonate'])->name('impersonate.stop');
 
 
 // Route::get('/posts', function () {
