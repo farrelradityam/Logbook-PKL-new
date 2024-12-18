@@ -22,7 +22,7 @@
     </script>
 
     <div class="flex items-center justify-between">
-        <h4 class="text-xl font-semibold mb-4">List Student</h4>
+        <h4 class="text-xl font-semibold mb-4">List Siswa</h4>
         <div class="mb-5 ">
         @can('create-student')
         <a href="{{ route('student.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
@@ -34,7 +34,7 @@
         <thead class="bg-gray-200">
             <tr>
                 <th class="px-4 py-2 text-center w-2/12">ID</th>
-                <th class="px-4 py-2 text-center w-6/12">Name</th>
+                <th class="px-4 py-2 text-center w-6/12">Nama</th>
                 <th class="px-4 py-2 text-center w-4/12">Action</th>
             </tr>
         </thead>

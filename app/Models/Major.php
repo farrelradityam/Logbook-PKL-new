@@ -13,4 +13,8 @@ class Major extends Model
     public function batchSchoolMajor() {
         return $this->hasMany(BatchSchoolMajor::class);
     }
+
+    public function school() {
+        return $this->belongsToMany(School::class, 'batch_school_majors',  'major_id', 'batch_school_id')->withTimestamps();
+    }
 }

@@ -3,9 +3,14 @@
     
     <div class="container mx-auto mt-6 p-4">
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-medium">ID Student: {{ $student->id }}</h2>
-            <p class="text-lg mt-4"><strong>Name : </strong>{{ $student->name }}</p>
+            <h2 class="text-2xl font-medium">ID Siswa: {{ $student->id }}</h2>
+            <p class="text-lg mt-4"><strong>Nama : </strong>{{ $student->name }}</p>
             <p class="text-lg mt-2"><strong>No.Telp : </strong>{{ $student->phone_number }}</p>
+            <p class="text-lg mt-2"><strong>Sekolah : </strong>{{ $student->batchSchoolMajor->batchSchool->school->name }}</p>
+            <p class="text-lg mt-2"><strong>Tahun : </strong>{{ $student->batchSchoolMajor->batchSchool->batch->year }}</p>
+            <p class="text-lg mt-2"><strong>Jurusan : </strong>{{ $student->batchSchoolMajor->major->code }}</p>
+            <p class="text-lg mt-2"><strong>Pembimbing Sekolah : </strong>{{ $student->mentor->name }}</p>
+            <p class="text-lg mt-2"><strong>Pembimbing Lapangan : </strong>{{ $student->industryAdvisor->name }}</p>
             <p class="text-lg mt-2"><strong>Created At : </strong>{{ $student->created_at->format('d M Y H:i') }}</p>
             <p class="text-lg mt-2"><strong>Updated At : </strong>{{ $student->updated_at->format('d M Y H:i') }}</p>
 

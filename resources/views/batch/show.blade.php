@@ -3,8 +3,8 @@
     
     <div class="container mx-auto mt-6 p-4">
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold">ID Batch : {{ $batch->id }}</h2>
-            <p class="text-lg mt-4"><strong>Year : </strong>{{ $batch->year }}</p>
+            <h2 class="text-2xl font-bold">ID Tahun : {{ $batch->id }}</h2>
+            <p class="text-lg mt-4"><strong>Tahun : </strong>{{ $batch->year }}</p>
             <p class="text-lg mt-2"><strong>Created At : </strong>{{ $batch->created_at->format('d M Y H:i') }}</p>
             <p class="text-lg mt-2"><strong>Updated At : </strong>{{ $batch->updated_at->format('d M Y H:i') }}</p>
 

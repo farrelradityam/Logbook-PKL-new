@@ -16,11 +16,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('schedule_of_activity_id');
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('validated_by_mentor_id');
             $table->foreign('schedule_of_activity_id')->references('id')->on('schedule_of_activities');
             $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('validated_by_mentor_id')->references('id')->on('mentors');
             $table->timestamps();
         });

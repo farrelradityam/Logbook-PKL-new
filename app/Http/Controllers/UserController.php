@@ -36,7 +36,7 @@ class UserController extends Controller
 
         $user->syncRoles(Role::whereIn('id', $request->roles)->pluck('name')->toArray());
 
-        return redirect()->route('user.index')->with('success', 'Data berhasil dibuat.');
+        return redirect()->route('user.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function show(User $user) {
@@ -57,7 +57,7 @@ class UserController extends Controller
 
         $user->syncRoles(Role::whereIn('id', $request->roles)->pluck('name')->toArray());
 
-        return redirect()->route('user.index')->with('success', 'Data berhasil diupdate.');
+        return redirect()->route('user.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function updatePassword(Request $request, User $user) {
@@ -70,7 +70,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('user.index')->with('success', 'Password berhasil diupdate.');
+        return redirect()->route('user.index')->with('success', 'Password berhasil diperbarui.');
     }
 
     public function destroy(User $user) {

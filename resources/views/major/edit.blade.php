@@ -10,7 +10,7 @@
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-5">Name Major</label>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-5">Nama Jurusan</label>
             <input type="text" id="name" name="name" value="{{ $major->name }}" class="px-3 py-2 border shadow rounded w-full block text-sm focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-slate-500"/>
             @error('name')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

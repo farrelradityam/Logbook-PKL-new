@@ -9,14 +9,9 @@ class IndustryAdvisor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'activity_id', 'schedule_of_activity_id'];
+    protected $fillable = ['name', 'phone_number'];
 
-    public function activity(){
-        return $this->belongsTo(Activity::class);
+    public function student(){
+        return $this->hasMany(Student::class);
     }
-
-    public function scheduleOfActivity(){
-        return $this->belongsTo(ScheduleOfActivity::class);
-    }
-
 }

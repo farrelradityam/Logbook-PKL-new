@@ -13,7 +13,6 @@ class Activity extends Model
         'description',
         'schedule_of_activity_id',
         'student_id',
-        'user_id',
         'validated_by_mentor_id',
     ];
 
@@ -25,16 +24,7 @@ class Activity extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
     public function validatedByMentor(){
         return $this->belongsTo(Mentor::class, 'mentor_id');
     }
-
-    public function industryAdvisor(){
-        return $this->hasMany(IndustryAdvisor::class);
-    }
-
 }

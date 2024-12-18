@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
+use App\Models\Batch;
+use App\Models\BatchSchool;
+use App\Models\BatchSchoolMajor;
+use App\Models\Major;
 use App\Models\School;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -17,37 +21,78 @@ class SchoolController extends Controller
         abort_unless(auth()->user()->can('view-all-school'), 403);
 
         $schools = School::all();
-        return view('school.index', compact('schools'), ['title' => 'CRUD SCHOOL']);
+        return view('school.index', compact('schools'), ['title' => 'CRUD SEKOLAH']);
     }
 
     public function create() {
         abort_unless(auth()->user()->can('create-school'), 403);
 
-        return view('school.create', ['title' => 'CREATE SCHOOL']);
+        $batches = Batch::all();
+        $majors = Major::all();
+
+        return view('school.create', compact('batches','majors'), ['title' => 'CREATE SEKOLAH']);
     }
 
     public function store(StoreSchoolRequest $request) {
-        School::create($request->validated());
-
-        return redirect()->route('school.index');
+        $school = School::create($request->validated());
+    
+        if ($request->has('batch')) {
+            foreach ($request->batch as $batchId) {
+                $batchSchool = BatchSchool::create([
+                    'school_id' => $school->id,
+                    'batch_id' => $batchId,
+                ]);
+    
+                if ($request->has('major')) {
+                    foreach ($request->major as $majorId) {
+                        $batchSchool->major()->attach($majorId);
+                    }
+                }
+            }
+        }
+    
+        return redirect()->route('school.index')->with('success', 'Data berhasil ditambahkan.');
     }
+    
 
     public function show(School $school) {
         abort_unless(auth()->user()->can('view-all-school'), 403);
+
+        $school->load(['batch', 'batchSchool.major']);
         
-        return view('school.show', compact('school'), ['title' => 'DETAIL SCHOOL']);
+        return view('school.show', compact('school'), ['title' => 'DETAIL SEKOLAH']);
     }
 
     public function edit(School $school) {
         abort_unless(auth()->user()->can('edit-school'), 403);
 
-        return view('school.edit', compact('school'), ['title' => 'EDIT SCHOOL']);
+        $batches = Batch::all();
+        $majors = Major::all();
+
+        $school->load(['batch', 'batchSchool.major']);
+
+        return view('school.edit', compact('school', 'batches', 'majors'), ['title' => 'EDIT SEKOLAH']);
     }
 
-    public function update(UpdateSchoolRequest $request, School $school) {        
+    public function update(UpdateSchoolRequest $request, School $school) {
         $school->update($request->validated());
-
-        return redirect()->route('school.index');
+    
+        if ($request->has('batch')) {
+            foreach ($request->batch as $batchId) {
+                $batchSchool = BatchSchool::firstOrCreate([
+                    'school_id' => $school->id,
+                    'batch_id' => $batchId,
+                ]);
+    
+                if ($request->has('major')) {
+                    foreach ($request->major as $majorId) {
+                        $batchSchool->major()->syncWithoutDetaching([$majorId]);
+                    }
+                }
+            }
+        }
+    
+        return redirect()->route('school.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy(School $school) {

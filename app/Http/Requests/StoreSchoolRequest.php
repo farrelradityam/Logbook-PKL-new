@@ -24,6 +24,8 @@ class StoreSchoolRequest extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:255', 'string'],
             'address' => ['required', 'min:3', 'max:255', 'string'],
+            'batch' => ['array', 'exists:batches,id'],
+            'major' => ['array', 'exists:majors,id'],
         ];
     }
 }

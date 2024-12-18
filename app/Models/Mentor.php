@@ -10,14 +10,10 @@ class Mentor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','gender','user_id'];
+    protected $fillable = ['name','phone_number'];
 
-    public function activity(){
-        return $this->hasMany(Activity::class);
-    }
-    
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function student(){
+        return $this->hasMany(Student::class);
     }
 
     public function fullname(): Attribute

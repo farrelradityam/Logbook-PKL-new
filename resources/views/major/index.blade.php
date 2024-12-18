@@ -22,7 +22,7 @@
     </script>
     
     <div class="flex items-center justify-between">
-        <h4 class="text-xl font-semibold mb-4">List Major</h4>
+        <h4 class="text-xl font-semibold mb-4">List Jurusan</h4>
         <div class="mb-5 ">
             @can('create-major')
             <a href="{{ route('major.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>

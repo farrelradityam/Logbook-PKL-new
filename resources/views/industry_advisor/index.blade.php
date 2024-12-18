@@ -22,16 +22,16 @@
     </script>
 
     <div class="flex items-center justify-between">
-        <h4 class="text-xl font-semibold mb-4">List Sekolah</h4>
+        <h4 class="text-xl font-semibold mb-4">List Pembimbing Lapangan</h4>
         <div class="mb-5 ">
-            @can('create-school')
-            <a href="{{ route('school.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
+            @can('create-industryAdvisor')
+            <a href="{{ route('industryAdvisor.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
             @endcan
         </div>
     </div>
 
     <div>
-        <table id="school-table" class="table-auto w-full bg-gray-300 rounded-lg shadow">
+        <table id="industryAdvisor-table" class="table-auto w-full bg-gray-300 rounded-lg shadow">
             <thead class="bg-gray-200">
                 <tr>
                     <th class="px-4 py-2 text-center w-2/12">ID</th>

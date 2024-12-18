@@ -20,9 +20,7 @@ class IndustryAdvisorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'activity_id' => Activity::inRandomOrder()->first()->id,
-            'schedule_of_activity_id' => ScheduleOfActivity::inRandomOrder()->first()->id
-
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 }

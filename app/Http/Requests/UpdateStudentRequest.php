@@ -24,6 +24,9 @@ class UpdateStudentRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'min:10', 'max:20'],
+            'batch_school_major_id' => ['required', 'exists:batch_school_majors,id'],
+            'mentor_id' => ['required', 'exists:mentors,id'],
+            'industry_advisor_id' => ['required', 'exists:industry_advisors,id'],
         ];
     }
 }

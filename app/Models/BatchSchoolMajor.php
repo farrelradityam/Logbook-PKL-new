@@ -9,7 +9,7 @@ class BatchSchoolMajor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['batch_school_id','msjor_id'];
+    protected $fillable = ['batch_school_id','major_id'];
 
     public function student() {
         return $this->hasMany(Student::class);

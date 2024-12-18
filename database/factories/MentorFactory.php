@@ -19,8 +19,7 @@ class MentorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'gender'=> fake()->randomElement(['L','P']),
-            'user_id' => User::inRandomOrder()->first()->id
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 }

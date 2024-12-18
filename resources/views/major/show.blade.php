@@ -3,9 +3,9 @@
     
     <div class="container mx-auto mt-6 p-4">
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold">ID Major : {{ $major->id }}</h2>
+            <h2 class="text-2xl font-bold">ID Jurusan : {{ $major->id }}</h2>
             <p class="text-lg mt-4"><strong>Code : </strong>{{ $major->code }}</p>
-            <p class="text-lg mt-2"><strong>Name : </strong>{{ $major->name }}</p>
+            <p class="text-lg mt-2"><strong>Nama Jurusan : </strong>{{ $major->name }}</p>
             <p class="text-lg mt-2"><strong>Created At : </strong>{{ $major->created_at->format('d M Y H:i') }}</p>
             <p class="text-lg mt-2"><strong>Updated At : </strong>{{ $major->updated_at->format('d M Y H:i') }}</p>
 

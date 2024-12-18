@@ -79,6 +79,30 @@ $(document).ready(function () {
       ]
   });
 
+  $('#mentor-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('dataMentor') }}",
+    
+    columns: [
+      {data: 'id', className: 'text-center'},
+      {data: 'name', className: 'text-center'},
+      {data: 'action', className: 'text-center', orderable: false, searchable: false},
+      ]
+  });
+
+  $('#industryAdvisor-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('dataIndustryAdvisor') }}",
+    
+    columns: [
+      {data: 'id', className: 'text-center'},
+      {data: 'name', className: 'text-center'},
+      {data: 'action', className: 'text-center', orderable: false, searchable: false},
+      ]
+  });
+
   $('#major-table').DataTable({
     processing: true,
     serverSide: true,

@@ -22,7 +22,7 @@
     </script>
 
     <div class="flex items-center justify-between">
-        <h4 class="text-xl font-semibold mb-4">List Batch</h4>
+        <h4 class="text-xl font-semibold mb-4">List Tahun</h4>
         <div class="mb-5 ">
         @can('create-batch')
         <a href="{{ route('batch.create') }}" class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-md ">Create Data</a>
@@ -34,7 +34,7 @@
         <thead class="bg-gray-200">
             <tr>
                 <th class="px-4 py-2 text-center w-2/12">ID</th>
-                <th class="px-4 py-2 text-center w-6/12">Year</th>
+                <th class="px-4 py-2 text-center w-6/12">Tahun</th>
                 <th class="px-4 py-2 text-center w-4/12">Action</th>
             </tr>
         </thead>

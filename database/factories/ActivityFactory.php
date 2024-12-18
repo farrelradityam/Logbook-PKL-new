@@ -24,7 +24,6 @@ class ActivityFactory extends Factory
             'description' => fake()->paragraph(),
             'schedule_of_activity_id' => ScheduleOfActivity::inRandomOrder()->first()->id,
             'student_id' => Student::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
             'validated_by_mentor_id' => Mentor::inRandomOrder()->first()->id
         ];
     }

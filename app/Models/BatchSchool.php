@@ -9,6 +9,7 @@ class BatchSchool extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = ['batch_id','school_id'];
 
     public function batchSchoolMajor(){
@@ -21,5 +22,9 @@ class BatchSchool extends Model
 
     public function school(){
         return $this->belongsTo(School::class);
+    }
+
+    public function major() {
+        return $this->belongsToMany(Major::class, 'batch_school_majors', 'batch_school_id', 'major_id')->withTimestamps();
     }
 }

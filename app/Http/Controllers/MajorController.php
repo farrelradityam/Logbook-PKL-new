@@ -15,37 +15,37 @@ class MajorController extends Controller
     public function index() {
         abort_unless(auth()->user()->can('view-all-major'), 403);
 
-        return view('major.index', ['title' => 'CRUD MAJOR']);
+        return view('major.index', ['title' => 'CRUD JURUSAN']);
     }
 
     public function create() {
         abort_unless(auth()->user()->can('create-major'), 403);
 
-        return view('major.create', ['title' => 'CREATE MAJOR']);
+        return view('major.create', ['title' => 'CREATE JURUSAN']);
     }
 
     public function store(StoreMajorRequest $request) {
         Major::create($request->validated());
 
-        return redirect()->route('major.index');
+        return redirect()->route('major.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function show(Major $major) {
         abort_unless(auth()->user()->can('view-all-major'), 403);
 
-        return view('major.show', compact('major'), ['title' => 'DETAIL MAJOR']);
+        return view('major.show', compact('major'), ['title' => 'DETAIL JURUSAN']);
     }
 
     public function edit(Major $major) {
         abort_unless(auth()->user()->can('edit-major'), 403);
 
-        return view('major.edit', compact('major'), ['title' => 'EDIT MAJOR']);
+        return view('major.edit', compact('major'), ['title' => 'EDIT JURUSAN']);
     }
 
     public function update(UpdateMajorRequest $request, Major $major) {
         $major->update($request->validated());
 
-        return redirect()->route('major.index');
+        return redirect()->route('major.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy(Major $major) {

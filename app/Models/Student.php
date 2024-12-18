@@ -12,18 +12,19 @@ class Student extends Model
     protected $fillable = ['name',
         'phone_number',
         'batch_school_major_id', 
-        'user_id',
+        'mentor_id', 
+        'industry_advisor_id', 
     ];
-
-    public function activity(){
-        return $this->hasMany(Activity::class);
-    }
 
     public function batchSchoolMajor(){
         return $this->belongsTo(BatchSchoolMajor::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function mentor(){
+        return $this->belongsTo(Mentor::class);
+    }
+
+    public function industryAdvisor(){
+        return $this->belongsTo(IndustryAdvisor::class);
     }
 }

@@ -12,6 +12,10 @@ class Batch extends Model
     protected $fillable = ['year'];
 
     public function batchSchool() {
-        return $this->hasMany(BatchSchool::class);
+        return $this->hasOne(BatchSchool::class);
+    }
+
+    public function school() {
+        return $this->belongsToMany(School::class, 'batch_schools',  'batch_id', 'school_id')->withTimestamps();
     }
 }

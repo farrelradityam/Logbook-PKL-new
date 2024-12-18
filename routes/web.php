@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\IndustryAdvisorController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
@@ -10,6 +12,7 @@ use App\Models\Activity;
 use App\Models\Batch;
 use App\Models\BatchSchool;
 use App\Models\BatchSchoolMajor;
+use App\Models\IndustryAdvisor;
 use App\Models\Major;
 use App\Models\Mentor;
 use App\Models\Post;
@@ -271,6 +274,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('batch', BatchController::class);
+Route::resource('industryAdvisor', IndustryAdvisorController::class);
+Route::get('/dataindustryadvisor', [IndustryAdvisorController::class, 'getData'])->name('dataIndustryAdvisor');
+Route::resource('mentor', MentorController::class);
+Route::get('/datamentor', [MentorController::class, 'getData'])->name('dataMentor');
 Route::resource('student', StudentController::class);
 Route::get('/datastudent', [StudentController::class, 'getData'])->name('dataStudent');
 Route::resource('school', SchoolController::class);

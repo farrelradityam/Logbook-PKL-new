@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\BatchSchoolMajor;
+use App\Models\IndustryAdvisor;
+use App\Models\Mentor;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,8 @@ class StudentFactory extends Factory
             'name' => fake()->name(),
             'phone_number' => fake()->phoneNumber(),
             'batch_school_major_id' => BatchSchoolMajor::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id
+            'mentor_id' => Mentor::inRandomOrder()->first()->id,
+            'industry_advisor_id' => IndustryAdvisor::inRandomOrder()->first()->id,
         ];
     }
 }

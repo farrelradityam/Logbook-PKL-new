@@ -20,6 +20,8 @@ class RolePermissionSeeder extends Seeder
             'view-all-major', 'create-major', 'edit-major', 'delete-major',
             'view-all-user', 'create-user', 'edit-user', 'delete-user',
             'view-all-student', 'create-student', 'edit-student', 'delete-student',
+            'view-all-mentor', 'create-mentor', 'edit-mentor', 'delete-mentor',
+            'view-all-industryAdvisor', 'create-industryAdvisor', 'edit-industryAdvisor', 'delete-industryAdvisor',
             'impersonate', 'view-crud',
         ];
         
@@ -35,13 +37,13 @@ class RolePermissionSeeder extends Seeder
 
 
         $adminPkl = Role::findByName('admin-pkl');
-        $adminPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
+        $adminPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student', 'view-all-mentor', 'view-all-industryAdvisor');
 
         $pembimbingPkl = Role::findByName('pembimbing-pkl');
-        $pembimbingPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
+        $pembimbingPkl->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student', 'view-all-mentor', 'view-all-industryAdvisor');
         
         $pembimbingSekolah = Role::findByName('pembimbing-sekolah');
-        $pembimbingSekolah->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student');
+        $pembimbingSekolah->givePermissionTo('view-crud', 'view-all-batch', 'view-all-school', 'view-all-major', 'view-all-user', 'view-all-student', 'view-all-mentor', 'view-all-industryAdvisor');
 
     }
 }
